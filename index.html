@@ -1,0 +1,2305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Grant writing course for Kappa Alpha Psi Guide Right foundations and affiliated 501(c)(3) organizations. Created by the National Guide Right Incubator.">
+<title>Guide Right Grant Academy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: Rise-style course shell. Sticky module rail on the left, one lesson at a time on a paper column, labs as working tools. */
+:root{
+  --crimson:#70110C; --crimson-soft:#f3e3df; --gold:#D4AA35; --gold-ink:#7a5c0e;
+  --bg:#f5efe2; --paper:#fffdf8; --ink:#241917; --muted:#685a52; --line:#e2d6bf;
+  --ok:#2f6b3a; --ok-bg:#e4f0e2; --warn:#8a5a00; --warn-bg:#fbf0d6; --bad:#9b1c13; --bad-bg:#f8e1de;
+  --on-crimson:#fffdf8;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --crimson:#e07a6f; --crimson-soft:#3a1f1c; --gold:#D4AA35; --gold-ink:#e2c26a;
+  --bg:#171110; --paper:#211817; --ink:#f2ebd7; --muted:#c0b09f; --line:#3d2f2b;
+  --ok:#8fcf95; --ok-bg:#1f3322; --warn:#e9c169; --warn-bg:#3a2e14; --bad:#f19a8f; --bad-bg:#3d1d1a;
+  --on-crimson:#1b1110; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --crimson:#e07a6f; --crimson-soft:#3a1f1c; --gold:#D4AA35; --gold-ink:#e2c26a;
+  --bg:#171110; --paper:#211817; --ink:#f2ebd7; --muted:#c0b09f; --line:#3d2f2b;
+  --ok:#8fcf95; --ok-bg:#1f3322; --warn:#e9c169; --warn-bg:#3a2e14; --bad:#f19a8f; --bad-bg:#3d1d1a;
+  --on-crimson:#1b1110; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+a{color:var(--crimson);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,3.2vw,2.3rem);color:var(--ink)}
+h3{font-size:1.3rem;margin-top:2rem}
+p{margin:0 0 1rem}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.tabnum{font-variant-numeric:tabular-nums}
+
+/* Top band */
+.band{background:#70110C;color:#fffdf8;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:3px solid var(--gold)}
+.band-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;padding-block:10px}
+.crest{width:38px;height:38px;border:2px solid #D4AA35;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#D4AA35;flex:none}
+.band-title{min-width:0;flex:1}
+.band-title b{font-family:var(--display);font-size:1.12rem;display:block;line-height:1.15}
+.band-title span{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#ecd9a0}
+.prog{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.75rem;color:#ecd9a0}
+.prog-bar{width:120px;height:8px;background:rgba(255,255,255,.18);border-radius:4px;overflow:hidden}
+.prog-bar i{display:block;height:100%;background:#D4AA35;width:0;transition:width .4s}
+.menu-btn{display:none;background:transparent;border:1.5px solid #D4AA35;color:#fffdf8;font:600 .9rem var(--body);padding:6px 12px;border-radius:6px;cursor:pointer}
+
+/* Shell */
+.shell{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:300px minmax(0,1fr);gap:32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 60px}
+nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);align-self:start;max-height:calc(100vh - 100px);overflow:auto;padding-right:4px}
+.rail ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.rail button{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:34px 1fr 18px;gap:8px;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;color:var(--ink);font-size:.95rem;line-height:1.3}
+.rail button:hover{background:var(--crimson-soft)}
+.rail button:focus-visible{outline:3px solid var(--gold)}
+.rail button[aria-current="true"]{background:var(--paper);box-shadow:inset 3px 0 0 var(--crimson);font-weight:700}
+.rail .num{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.rail .chk{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line)}
+.rail .done .chk{background:var(--gold);border-color:var(--gold)}
+.rail-head{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:14px 10px 6px}
+
+main{min-width:0}
+.lesson{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,4vw,48px)}
+.lesson-head{display:grid;gap:10px;margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.lesson-head .lede{font-size:1.12rem;color:var(--muted);max-width:66ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.prose{max-width:68ch}
+.prose ul,.prose ol{padding-left:1.3rem;margin:0 0 1rem}
+.prose li{margin-bottom:.35rem}
+
+/* Tags */
+.tag{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;padding:2px 7px;border-radius:4px;vertical-align:2px;white-space:nowrap;border:1px solid}
+.t-std{color:var(--crimson);border-color:var(--crimson)}
+.t-bp{color:var(--ok);border-color:var(--ok)}
+.t-opt{color:var(--muted);border-color:var(--muted)}
+.t-gate{background:var(--crimson);color:var(--on-crimson);border-color:var(--crimson)}
+
+/* Blocks */
+.callout{border-left:4px solid var(--gold);background:var(--warn-bg);padding:14px 18px;border-radius:0 10px 10px 0;margin:1.2rem 0;max-width:72ch}
+.callout.gate{border-color:var(--crimson);background:var(--crimson-soft)}
+.callout.note{border-color:var(--muted);background:transparent;border:1px dashed var(--line);border-left:4px solid var(--muted);border-radius:8px}
+.callout b:first-child{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.quote{font-family:var(--display);font-size:1.35rem;line-height:1.4;color:var(--crimson);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:1.6rem 0;max-width:60ch}
+
+.tblwrap{overflow-x:auto;margin:1rem 0 1.4rem;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td code,p code{font-family:var(--mono);font-size:.85em;background:var(--bg);padding:1px 5px;border-radius:4px}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:1rem 0 1.4rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:1rem 0 1.4rem}
+.card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;min-width:0;background:var(--paper)}
+.card h4{font-family:var(--body);font-size:1rem;margin:0 0 6px}
+.card p{font-size:.95rem;margin:0;color:var(--muted)}
+.card.weak{border-top:4px solid var(--bad)}
+.card.strong{border-top:4px solid var(--ok)}
+.card .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:block}
+.card.weak .lbl{color:var(--bad)} .card.strong .lbl{color:var(--ok)}
+
+/* Ladder */
+.ladder{display:grid;gap:8px;margin:1.2rem 0 1.6rem;max-width:720px}
+.rung{display:grid;grid-template-columns:76px 1fr;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rung .lv{background:var(--crimson);color:var(--on-crimson);font-family:var(--mono);font-size:.78rem;display:grid;place-items:center;text-align:center;line-height:1.2;padding:6px}
+.rung div:last-child{padding:10px 14px}
+.rung b{display:block}
+.rung span{color:var(--muted);font-size:.93rem}
+
+/* Steps */
+.steps{list-style:none;padding:0;margin:1rem 0 1.4rem;display:grid;gap:10px;counter-reset:s;max-width:72ch}
+.steps li{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);width:32px;height:32px;border-radius:50%;background:var(--crimson);color:var(--on-crimson);display:grid;place-items:center;font-family:var(--mono);font-size:.85rem}
+
+/* Accordion */
+details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:var(--paper);max-width:76ch}
+summary{cursor:pointer;padding:12px 16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--crimson)}
+details[open] summary::after{content:"–"}
+details>div{padding:0 16px 14px}
+
+/* Checklist */
+.checklist{list-style:none;padding:0;margin:1rem 0;display:grid;gap:6px;max-width:76ch}
+.checklist label{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer}
+.checklist input{width:18px;height:18px;margin-top:3px;accent-color:#70110C}
+.checklist small{display:block;color:var(--muted)}
+.meter{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-top:6px}
+
+/* Knowledge check */
+.kc{border:2px solid var(--gold);border-radius:12px;padding:20px;margin:2rem 0 0;max-width:76ch}
+.kc .q{font-weight:700;margin-bottom:10px}
+.kc .opts{display:grid;gap:8px}
+.kc button.opt{all:unset;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:10px 14px;cursor:pointer;background:var(--paper)}
+.kc button.opt:hover{border-color:var(--crimson)}
+.kc button.opt:focus-visible{outline:3px solid var(--gold)}
+.kc button.opt.right{background:var(--ok-bg);border-color:var(--ok)}
+.kc button.opt.wrong{background:var(--bad-bg);border-color:var(--bad)}
+.kc .fb{margin-top:10px;font-size:.95rem}
+.kc + .kc{margin-top:14px}
+
+/* Labs */
+.lab{border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:clamp(16px,3vw,28px);margin:1.4rem 0}
+.lab-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:14px}
+.lab-head h3{margin:0}
+.sample{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn);padding:2px 8px;border-radius:4px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:4px}
+.field small{display:block;color:var(--muted);font-size:.78rem;margin-top:3px}
+input[type=number],input[type=text],select,textarea{width:100%;font:inherit;font-size:1rem;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0 12px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat .v{font-family:var(--display);font-size:1.7rem;color:var(--crimson);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .k{font-size:.8rem;color:var(--muted);margin-top:4px}
+.stat .d{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.gen{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--crimson);border-radius:8px;padding:14px 16px;font-size:.98rem}
+.flags{margin-top:10px;display:grid;gap:6px}
+.flag{font-size:.88rem;padding:8px 12px;border-radius:6px;background:var(--warn-bg);color:var(--ink);border-left:3px solid var(--gold)}
+.btn{font:600 .95rem var(--body);padding:9px 16px;border-radius:8px;border:1.5px solid var(--crimson);background:var(--crimson);color:var(--on-crimson);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--crimson)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* Rubric */
+.rub{display:grid;gap:10px}
+.rub-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.rub-row b{display:block}
+.rub-row span{font-size:.85rem;color:var(--muted)}
+.seg{display:flex;gap:4px}
+.seg button{all:unset;box-sizing:border-box;width:34px;height:34px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--mono);cursor:pointer;background:var(--paper)}
+.seg button[aria-pressed="true"]{background:var(--crimson);color:var(--on-crimson);border-color:var(--crimson)}
+.seg button:focus-visible{outline:3px solid var(--gold)}
+.total{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:14px}
+.total .v{font-family:var(--display);font-size:2.4rem;color:var(--crimson)}
+.pill{font-family:var(--mono);font-size:.75rem;padding:4px 10px;border-radius:20px}
+.pill.ok{background:var(--ok-bg);color:var(--ok)} .pill.warn{background:var(--warn-bg);color:var(--warn)} .pill.bad{background:var(--bad-bg);color:var(--bad)}
+.excerpt{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:.96rem;max-height:none}
+.excerpt h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
+.excerpt h4:first-child{margin-top:0}
+
+/* Templates */
+.tpl{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:10px 0;font-size:.95rem;white-space:pre-wrap;max-width:80ch}
+.tpl .copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 10px}
+.tpl-title{font-weight:700;margin-top:1.4rem}
+
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:28px;flex-wrap:wrap}
+.pager .btn{min-width:150px}
+
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start}
+.facts{border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px;background:var(--bg)}
+.facts div{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+.facts b{font-family:var(--display);font-size:1.5rem;color:var(--crimson);min-width:2.2ch;text-align:right}
+.facts span{font-size:.92rem;color:var(--muted)}
+.legend{display:grid;gap:8px;margin:1rem 0}
+.legend div{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:baseline;font-size:.95rem}
+
+
+.kit-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.kit-nav a{font-size:.85rem;padding:5px 12px;border:1px solid var(--line);border-radius:20px;text-decoration:none;color:var(--ink);background:var(--paper)}
+.kit-nav a:hover{border-color:var(--crimson)}
+.kit-item{max-width:84ch}
+.kit-item .tpl{margin:6px 0 0;padding-top:44px}
+.kit-note{font-size:.9rem;color:var(--muted);margin:0 0 6px}
+.proposal{border:1px solid var(--line);border-radius:12px;padding:clamp(16px,3vw,32px);background:var(--paper);max-width:82ch}
+.proposal h4{font-family:var(--display);font-size:1.15rem;margin:1.6rem 0 .5rem;color:var(--crimson)}
+.proposal ol{padding-left:1.3rem}
+.prop-head{border-bottom:1px solid var(--line);padding-bottom:14px}
+.prop-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 18px;margin:12px 0 0}
+.prop-meta div{min-width:0}
+.prop-meta dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.prop-meta dd{margin:2px 0 0;font-size:.95rem}
+.cert{margin-top:2rem;border-top:1px solid var(--line);padding-top:8px}
+.cert canvas{display:block;width:100%;max-width:720px;height:auto;border:1px solid var(--line);border-radius:8px;margin:14px 0}
+.facts .field label{font-size:.85rem;font-weight:600}
+.facts .field small{display:block;color:var(--muted);font-size:.8rem;margin-top:4px}
+h1[tabindex],h2[tabindex]{outline:none}
+@media (max-width:980px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  nav.rail{position:fixed;inset:0;top:0;z-index:30;max-height:none;background:var(--paper);padding:calc(env(safe-area-inset-top,0px) + 70px) max(16px,env(safe-area-inset-right,0px)) 30px max(16px,env(safe-area-inset-left,0px));display:none}
+  nav.rail.open{display:block}
+  .menu-btn{display:inline-block}
+  .prog-bar{width:70px}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .prog-txt{display:none}
+  .band-title span{display:none}
+  .rub-row{grid-template-columns:minmax(0,1fr)}
+  .legend div{grid-template-columns:minmax(0,1fr);gap:2px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="band">
+  <div class="band-in">
+    <div class="crest" aria-hidden="true">GR</div>
+    <div class="band-title"><b>Guide Right Grant Academy</b><span>Created by the National Guide Right Incubator</span></div>
+    <div class="prog" role="group" aria-label="Course progress"><span class="prog-txt" id="progTxt">0 of 15 complete</span><div class="prog-bar"><i id="progBar"></i></div></div>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="rail">Modules</button>
+  </div>
+</header>
+
+<div class="shell">
+<nav class="rail" id="rail" aria-label="Course modules"></nav>
+<main id="main">
+
+<!-- ============ 0 WELCOME ============ -->
+<section class="lesson" data-id="welcome" data-num="00" data-title="Welcome and course map">
+  <div class="hero-grid">
+    <div>
+      <div class="lesson-head" style="border:0;padding:0;margin-bottom:14px">
+        <span class="eyebrow">Created by the National Guide Right Incubator</span>
+        <h1 style="font-size:clamp(2.1rem,5vw,3.3rem)">Guide Right Grant Academy</h1>
+        <p class="lede">Win grants with evidence your program already owns. This course is for every Kappa Alpha Psi chapter's Guide Right foundation or affiliated 501(c)(3) organization. It trains program leaders to turn Kappa League records and college scholarship results into proof a funder can trust, and trains board members to approve and award grants fairly.</p>
+      </div>
+      <div class="prose">
+        <p><strong>Who this course serves.</strong> Directors, officers, and grant board members of Guide Right foundations and affiliated 501(c)(3) organizations, plus chapter Guide Right Directors, Kappa League Program Directors, scholarship committees, and treasurers.</p>
+        <p><strong>What you will produce.</strong> Each module adds a piece of your Grant Ready Packet. By Module 14 your organization holds a complete, reusable application kit: data profile, scholarship evidence paragraph, need statement, logic model, budget with narrative, evaluation plan, and the agreements and policies in the Template Kit.</p>
+      </div>
+    </div>
+    <div class="facts" aria-label="Course at a glance">
+      <div><b class="tabnum">14</b><span>modules plus a library with a template kit, a sample proposal, and a facilitator guide</span></div>
+      <div><b class="tabnum">3</b><span>working labs: Scholarship Evidence, Budget, Grant Board Review</span></div>
+      <div><b class="tabnum">8</b><span>to 10 hours, self paced or as a six week cohort</span></div>
+      <div><b class="tabnum">28</b><span>templates: MOUs, memos, resolutions, policies, letters, and board forms</span></div>
+      <div class="field" style="display:block"><label for="learnerOrg">Your organization</label><input type="text" id="learnerOrg" placeholder="e.g. Riverbend Guide Right Foundation"><small id="syncStatus">Your progress saves in this browser.</small></div>
+    </div>
+  </div>
+
+  <h3>Course outcomes</h3>
+  <ol class="steps">
+    <li><span>Confirm your organization's grant readiness: legal applicant, registrations, and a current document library.</span></li>
+    <li><span>Keep the chapter and its affiliated 501(c)(3) separate in funds, approvals, and signatures.</span></li>
+    <li><span>Build a data system that captures attendance, program completion, scholarships, and college outcomes with consistent definitions.</span></li>
+    <li><span>Convert scholarship and college data into verifiable metrics and write them as evidence a reviewer can check.</span></li>
+    <li><span>Write a need statement, logic model, narrative, budget, and evaluation plan that align with each other.</span></li>
+    <li><span>Protect students: consent, privacy, and small group suppression in every public number and story.</span></li>
+    <li><span>Run scholarships under written procedures that hold up to funder, auditor, and IRS review.</span></li>
+    <li><span>Serve on your organization's grant board using a shared rubric, conflict of interest rules, and calibrated scoring.</span></li>
+  </ol>
+
+  <h3>How to read the tags</h3>
+  <div class="legend">
+    <div><span><span class="tag t-std">STANDARD</span></span><span>Required practice for every organization applying for or managing grants.</span></div>
+    <div><span><span class="tag t-bp">BEST PRACTICE</span></span><span>Strongly recommended. Reviewers will notice its absence.</span></div>
+    <div><span><span class="tag t-opt">OPTIONAL</span></span><span>Useful when capacity allows or a funder asks for it.</span></div>
+    <div><span><span class="tag t-gate">RELEASE GATE</span></span><span>Stop point. Nothing goes out the door until this is satisfied.</span></div>
+  </div>
+
+  <div class="callout note"><b>Build note</b>All student figures in this course are labeled samples. Replace them with your chapter's own verified records. Rubric weights in Module 13 are a starting point for each board to adopt or adjust. This course is training, not legal or tax advice.</div>
+</section>
+
+<!-- ============ 1 READINESS ============ -->
+<section class="lesson" data-id="m1" data-num="01" data-title="Grant readiness foundations" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 01 · 30 minutes</span>
+    <h2>Grant readiness foundations</h2>
+    <p class="lede">Before a reviewer reads a word of your story, someone checks whether you can legally receive and manage the award. Most first applications that fail are screened out here.</p>
+  </div>
+  <div class="prose">
+    <h3 style="margin-top:0">Who is the applicant?</h3>
+    <p>Funders contract with a legal entity, not a chapter or a committee. Decide which of these will apply on your chapter's behalf before you write anything:</p>
+    <ul>
+      <li><strong>The chapter's affiliated 501(c)(3) organization or foundation</strong> with its own separate EIN and IRS determination letter.</li>
+      <li><strong>A fiscal sponsor</strong>, an established nonprofit that receives the grant and manages funds for your program under a written agreement.</li>
+      <li><strong>A partner applicant</strong>, such as a school district or college, with the chapter named as the program partner.</li>
+    </ul>
+    <p>The chapter is not the 501(c)(3). An affiliated 501(c)(3) is a separate legal entity with its own board, bank account, books, and IRS filings. Grant funds go to that organization and are spent and reported under its controls.</p>
+    <p><span class="tag t-std">STANDARD</span> Confirm with fraternity leadership which entity may apply, who may sign, and how the fraternity name and marks may appear in an application.</p>
+
+    <h3>Registrations for federal and many state awards</h3>
+    <ul>
+      <li><strong>SAM.gov</strong> registration issues your Unique Entity ID (UEI). Federal awards require an active registration, and it must be renewed every year.</li>
+      <li><strong>Grants.gov</strong> is where most federal applications are submitted. Roles inside the account control who can submit.</li>
+      <li><span class="tag t-bp">BEST PRACTICE</span> Start registration weeks before a deadline. Validation delays are common and outside your control.</li>
+    </ul>
+  </div>
+
+  <h3>Your document library</h3>
+  <p class="prose">Keep these in one shared, access controlled folder with a named owner and a review date. Check each item you have current.</p>
+  <ul class="checklist" data-store="m1-docs">
+    <li><label><input type="checkbox" id="d1"><span><span class="tag t-std">STANDARD</span> IRS determination letter of the affiliated 501(c)(3) (or fiscal sponsor agreement)</span></label></li>
+    <li><label><input type="checkbox" id="d2"><span><span class="tag t-std">STANDARD</span> The applicant organization's EIN and a signed W-9</span></label></li>
+    <li><label><input type="checkbox" id="d3"><span><span class="tag t-std">STANDARD</span> The applicant organization's current board roster, plus the chapter officers who lead the program</span></label></li>
+    <li><label><input type="checkbox" id="d4"><span><span class="tag t-std">STANDARD</span> The applicant organization's most recent IRS Form 990 filing (990-N, 990-EZ, or 990)</span></label></li>
+    <li><label><input type="checkbox" id="d5"><span><span class="tag t-std">STANDARD</span> The applicant organization's financial statements for the last completed fiscal year<small>An audit or review if your size or funders require one.</small></span></label></li>
+    <li><label><input type="checkbox" id="d6"><span><span class="tag t-std">STANDARD</span> Current operating budget and Guide Right program budget</span></label></li>
+    <li><label><input type="checkbox" id="d7"><span><span class="tag t-std">STANDARD</span> Youth protection policy, background check practice, and mentor training record</span></label></li>
+    <li><label><input type="checkbox" id="d8"><span><span class="tag t-bp">BEST PRACTICE</span> Certificate of general liability insurance</span></label></li>
+    <li><label><input type="checkbox" id="d9"><span><span class="tag t-bp">BEST PRACTICE</span> Parent and guardian consent forms for data use and media release</span></label></li>
+    <li><label><input type="checkbox" id="d10"><span><span class="tag t-bp">BEST PRACTICE</span> Three letters of support refreshed each year<small>Schools, colleges, employers, or community partners.</small></span></label></li>
+    <li><label><input type="checkbox" id="d11"><span><span class="tag t-opt">OPTIONAL</span> SAM.gov UEI and Grants.gov account</span></label></li>
+  </ul>
+  <div class="meter" id="m1-docs-meter"></div>
+
+  <div class="kc" data-answer="b">
+    <div class="q">A chapter committee wants to apply to a community foundation next month. The chapter has no affiliated 501(c)(3) organization or foundation. What is the first move?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">Apply under the Guide Right Director's personal name and transfer funds later.</button>
+      <button class="opt" data-v="b">Identify the legal applicant: an affiliated 501(c)(3), a fiscal sponsor, or a partner applicant, and confirm approval.</button>
+      <button class="opt" data-v="c">Write the narrative first and settle the applicant after the award.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ AFFILIATE ============ -->
+<section class="lesson" data-id="aff" data-num="02" data-title="The chapter and its affiliated 501(c)(3)" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 02 · 40 minutes</span>
+    <h2>The chapter and its affiliated 501(c)(3)</h2>
+    <p class="lede">A chapter is not a 501(c)(3). Its affiliated 501(c)(3) organization or foundation is a separate legal entity. Grants run through that organization, and chapter members deliver the program under a written agreement.</p>
+  </div>
+
+  <div class="tblwrap"><table>
+    <thead><tr><th></th><th>Chapter</th><th>Affiliated 501(c)(3) organization or foundation</th></tr></thead>
+    <tbody>
+      <tr><td><b>Legal status</b></td><td>A chapter of Kappa Alpha Psi Fraternity, Inc. Not a 501(c)(3).</td><td>A separate nonprofit with its own IRS determination letter</td></tr>
+      <tr><td><b>Identifier</b></td><td>Chapter records under fraternity rules</td><td>Its own separate EIN</td></tr>
+      <tr><td><b>Governed by</b></td><td>Chapter officers under fraternity bylaws</td><td>Its own board of directors under its own bylaws</td></tr>
+      <tr><td><b>Bank account</b></td><td>Chapter account for chapter business</td><td>Separate account for charitable funds</td></tr>
+      <tr><td><b>Books and filings</b></td><td>Chapter and fraternity reporting</td><td>Its own books and IRS Form 990</td></tr>
+      <tr><td><b>Role in grants</b></td><td>Delivers the program through member volunteers</td><td>Applies, signs, receives, spends, and reports</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>How grant funds move</h3>
+  <ol class="steps">
+    <li><span>The organization's board approves the application and budget.</span></li>
+    <li><span>The organization's authorized officer signs and submits.</span></li>
+    <li><span>Award funds go into the organization's account, never a chapter or personal account.</span></li>
+    <li><span>The organization pays vendors directly or reimburses documented, preapproved program expenses.</span></li>
+    <li><span>Chapter program leaders send receipts and program data to the organization on schedule.</span></li>
+    <li><span>The organization reports to the funder and records the grant on its Form 990.</span></li>
+  </ol>
+
+  <h3>Keep the line clear</h3>
+  <div class="prose"><ul>
+    <li><span class="tag t-std">STANDARD</span> A written memorandum of understanding (MOU) between the chapter and the organization, reviewed each program year. See the Template Kit.</li>
+    <li><span class="tag t-std">STANDARD</span> The organization's board authorizes every application by resolution or recorded vote.</li>
+    <li><span class="tag t-std">STANDARD</span> Charitable funds never pay membership dues, chapter social events, regalia, or anything that mainly benefits members.</li>
+    <li><span class="tag t-std">STANDARD</span> Members are reimbursed only for documented, preapproved program expenses under a written policy.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> The organization adopts a conflict of interest policy and records recusals in its minutes.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Grant correspondence, letterhead, and signatures come from the organization, with the chapter named as the program partner.</li>
+  </ul></div>
+  <div class="callout gate"><b>Release gate</b>No application is submitted without the organization's board authorization and the signature of its authorized officer.</div>
+
+  <h3>Fraternity requirements to confirm</h3>
+  <p class="prose">Confirm each item with International Headquarters and the National Guide Right Commission. Record the answer, who gave it, and the date in your document library. This course does not state fraternity policy.</p>
+  <ul class="checklist" data-store="aff-frat">
+    <li><label><input type="checkbox" id="fr1"><span>Whether and how the affiliated organization may use the fraternity name and marks</span></label></li>
+    <li><label><input type="checkbox" id="fr2"><span>Who must approve applications that name the fraternity or its programs</span></label></li>
+    <li><label><input type="checkbox" id="fr3"><span>Good standing requirements for the chapter before applying</span></label></li>
+    <li><label><input type="checkbox" id="fr4"><span>Insurance requirements for youth programs and events</span></label></li>
+    <li><label><input type="checkbox" id="fr5"><span>Youth protection, background check, and training requirements for mentors</span></label></li>
+    <li><label><input type="checkbox" id="fr6"><span>Reporting the Province or the Commission expects on grants received</span></label></li>
+    <li><label><input type="checkbox" id="fr7"><span>Approval needed for partnership agreements with schools or colleges</span></label></li>
+  </ul>
+  <div class="meter" id="aff-frat-meter"></div>
+
+  <div class="kc" data-answer="b">
+    <div class="q">A funder is ready to send an award this week. The Guide Right Director offers the chapter's bank account because it is faster. What is correct?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">Accept it into the chapter account and transfer it later.</button>
+      <button class="opt" data-v="b">The award goes only to the affiliated 501(c)(3)'s account, the entity that signed the application.</button>
+      <button class="opt" data-v="c">Use the director's personal account to save time.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+  <div class="kc" data-answer="b">
+    <div class="q">Which expense should never be paid from the organization's grant funds?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">Charter bus for a college tour</button>
+      <button class="opt" data-v="b">A chapter social event for members</button>
+      <button class="opt" data-v="c">Background checks for mentors</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+
+<!-- ============ 2 FUNDERS ============ -->
+<section class="lesson" data-id="m2" data-num="03" data-title="Funder landscape and prospecting" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 03 · 40 minutes</span>
+    <h2>Funder landscape and prospecting</h2>
+    <p class="lede">The best proposal sent to the wrong funder scores zero. Fit comes first, writing second.</p>
+  </div>
+
+  <div class="tblwrap"><table>
+    <thead><tr><th>Funder type</th><th>What they tend to value</th><th>Reporting load</th><th>Where Guide Right fits</th></tr></thead>
+    <tbody>
+      <tr><td><b>Community foundations</b></td><td>Local need, local partners, relationships with program staff</td><td>Light to moderate</td><td>Strong fit for chapter level Kappa League and scholarship work</td></tr>
+      <tr><td><b>Private and family foundations</b></td><td>Alignment with a stated focus such as youth, education, or boys and young men</td><td>Moderate</td><td>Strong when the foundation funds mentoring or college access</td></tr>
+      <tr><td><b>Corporate giving</b></td><td>Workforce pipeline, employee volunteering, visibility in communities they serve</td><td>Light</td><td>STEM, financial literacy, career exposure; ask about employee match programs</td></tr>
+      <tr><td><b>Federal discretionary grants</b></td><td>Exact compliance with the funding notice, measurable performance, financial controls</td><td>Heavy</td><td>Usually through a partner or a chapter's established affiliated 501(c)(3)</td></tr>
+      <tr><td><b>State and pass through funds</b></td><td>State priorities, often administered by agencies or regional bodies</td><td>Moderate to heavy</td><td>Workforce, juvenile justice prevention, education access</td></tr>
+      <tr><td><b>United Way and pooled funds</b></td><td>Shared community outcomes and common metrics</td><td>Moderate</td><td>Strong when your metrics match their scorecard</td></tr>
+      <tr><td><b>Colleges and universities</b></td><td>Enrollment pipeline, first generation and pre college programming</td><td>Light</td><td>Campus visits, dual partnerships, scholarship matches</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Where to find prospects</h3>
+  <div class="prose"><ul>
+    <li><strong>Candid (Foundation Directory)</strong> to search funders by geography and subject; many public libraries offer free access.</li>
+    <li><strong>Form 990-PF filings</strong> show a private foundation's actual grants, recipients, and amounts. Read the grant list, not only the mission statement.</li>
+    <li><strong>Funder websites and annual reports</strong> for current priorities, deadlines, and whether they accept unsolicited proposals.</li>
+    <li><strong>Peer organizations</strong>: look at who funds other mentoring and college access programs in your region.</li>
+  </ul></div>
+
+  <div class="lab">
+    <div class="lab-head"><h3>Fit test</h3><span class="eyebrow">Check each that is true for one prospect</span></div>
+    <ul class="checklist" data-store="m2-fit" style="margin:0">
+      <li><label><input type="checkbox" id="f1"><span>Their stated focus includes youth, mentoring, education, or college access</span></label></li>
+      <li><label><input type="checkbox" id="f2"><span>They fund in our city, county, or state</span></label></li>
+      <li><label><input type="checkbox" id="f3"><span>Our type of applicant is eligible</span></label></li>
+      <li><label><input type="checkbox" id="f4"><span>Their typical award size matches what we need</span></label></li>
+      <li><label><input type="checkbox" id="f5"><span>We can meet the deadline with a quality application</span></label></li>
+      <li><label><input type="checkbox" id="f6"><span>We can carry the reporting they require</span></label></li>
+    </ul>
+    <div class="row" style="margin-top:12px"><span class="pill warn" id="fitPill">Check the boxes to rate fit</span></div>
+  </div>
+
+  <h3>The current federal climate</h3>
+  <div class="prose">
+    <p>Executive Order 14332, issued August 7, 2025, added senior political appointee review of discretionary grant announcements and awards, and directed that discretionary awards permit termination for convenience when an award no longer advances agency priorities. For chapters this means:</p>
+    <ul>
+      <li><span class="tag t-std">STANDARD</span> Read the priorities section of every federal funding notice and answer it in the funder's own terms.</li>
+      <li><span class="tag t-bp">BEST PRACTICE</span> Build a mixed portfolio. Do not let one federal award pay for core program operations.</li>
+      <li><span class="tag t-bp">BEST PRACTICE</span> Keep impact data current so you can respond quickly to an annual progress review.</li>
+    </ul>
+    <p>Federal policy is changing quickly. Check the current notice and agency guidance before each application.</p>
+  </div>
+
+  <h3>Before you write: talk to the funder</h3>
+  <details><summary>Questions for a program officer call</summary><div>
+    <ul><li>What results matter most to your board this cycle?</li><li>What made recent successful applicants stand out?</li><li>Do you fund scholarships directly, program costs, or both?</li><li>What data do you expect in reports, and how often?</li><li>Is a letter of inquiry required before a full proposal?</li></ul>
+  </div></details>
+
+  <div class="kc" data-answer="c">
+    <div class="q">A private foundation's website says it supports "education." Where is the strongest evidence of whether it funds programs like Kappa League?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">The mission statement on its home page</button>
+      <button class="opt" data-v="b">The number of staff listed on the site</button>
+      <button class="opt" data-v="c">The grant list in its recent Form 990-PF filings</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 3 DATA ENGINE ============ -->
+<section class="lesson" data-id="m3" data-num="04" data-title="Building the data engine" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 04 · 45 minutes</span>
+    <h2>Building the data engine</h2>
+    <p class="lede">You can only cite what you can show. Strong applications come from chapters that record the same things the same way every year.</p>
+  </div>
+  <div class="quote">If the number is not in a record, it does not go in a proposal.</div>
+
+  <h3 style="margin-top:0">Data your program already creates</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Area</th><th>Metric</th><th>Source record</th><th>Owner</th><th>Cadence</th></tr></thead>
+    <tbody>
+      <tr><td>Enrollment</td><td>Kappa Leaguers enrolled by grade band and school</td><td>Program roster with unique student ID</td><td>Kappa League Director</td><td>Each semester</td></tr>
+      <tr><td>Participation</td><td>Session attendance rate; active participant count</td><td>Sign in sheet or digital check in</td><td>Session lead</td><td>Every session</td></tr>
+      <tr><td>Curriculum</td><td>Seven Phases progress; iGrad financial literacy modules completed</td><td>Phase tracker; iGrad tracker</td><td>Program Director</td><td>Monthly</td></tr>
+      <tr><td>Enrichment</td><td>Kamp Kappa, college tours, STEM events attended</td><td>Event rosters</td><td>Event lead</td><td>Per event</td></tr>
+      <tr><td>Mentoring</td><td>Active mentors, mentor hours, mentor to student ratio</td><td>Mentor roster and hour log</td><td>Guide Right Director</td><td>Monthly</td></tr>
+      <tr><td>College readiness</td><td>FAFSA completion, applications submitted, acceptances</td><td>Senior tracker with documentation</td><td>Scholarship chair</td><td>Fall and spring</td></tr>
+      <tr><td>Scholarships</td><td>Applications, awards, dollars, outside aid secured</td><td>Scholarship ledger and award letters</td><td>Scholarship chair and treasurer</td><td>Each award cycle</td></tr>
+      <tr><td>College outcomes</td><td>Fall enrollment, second year persistence, completion</td><td>National Student Clearinghouse match or verified self report</td><td>Data lead</td><td>Annually</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Write a data dictionary</h3>
+  <p class="prose">Every metric needs one written definition that does not change between years. Two reviewers reading your numbers should reach the same count.</p>
+  <div class="grid2">
+    <div class="card weak"><span class="lbl">Undefined</span><h4>"Active members: 40"</h4><p>Active by what standard? Enrolled? Attended once? This number cannot be checked or compared year to year.</p></div>
+    <div class="card strong"><span class="lbl">Defined</span><h4>"Active Leaguer"</h4><p>A student on the roster who attended at least 60 percent of scheduled sessions in the program year. Source: attendance log. Counted June 1. (The threshold is the chapter's choice; write it down and keep it.)</p></div>
+  </div>
+
+  <h3>Collection standards</h3>
+  <ul class="steps">
+    <li><span><span class="tag t-std">STANDARD</span> One roster. Every student and mentor carries a unique ID used in every log.</span></li>
+    <li><span><span class="tag t-std">STANDARD</span> Record at the event, never from memory afterward.</span></li>
+    <li><span><span class="tag t-bp">BEST PRACTICE</span> Reconcile attendance and rosters monthly; fix gaps while people still remember.</span></li>
+    <li><span><span class="tag t-bp">BEST PRACTICE</span> Keep three years of history. Funders trust a three year trend over a single year.</span></li>
+    <li><span><span class="tag t-opt">OPTIONAL</span> Move logs into a database such as the chapter's tracker so reports run themselves.</span></li>
+  </ul>
+
+  <h3>Protecting students</h3>
+  <div class="prose">
+    <p>Kappa Leaguers are minors. Their data deserves the same care as their physical safety.</p>
+    <ul>
+      <li><strong>Consent.</strong> Collect signed parent or guardian consent for data use, for college outcome tracking, and separately for photos and stories.</li>
+      <li><strong>Minimum collection.</strong> Collect only what you will use. Avoid storing sensitive identifiers you do not need.</li>
+      <li><strong>Access.</strong> Store records in an access controlled system. Do not pass rosters around by personal email or text.</li>
+      <li><strong>Aggregate reporting.</strong> Report counts and rates, never individual records.</li>
+      <li><strong>Small group suppression.</strong> When a group is small, a percentage can identify a student. A common practice is to suppress results for any group under 10; set your chapter's threshold in writing.</li>
+      <li><strong>School records.</strong> Grades and transcripts held by schools are covered by FERPA. Obtain them through the student and family with written consent or a formal agreement with the school.</li>
+    </ul>
+  </div>
+  <div class="callout gate"><b>Release gate</b>No student name, photo, quote, or story appears in any application, report, or social post unless a signed release for that use is on file.</div>
+
+  <div class="kc" data-answer="a">
+    <div class="q">Your chapter had four seniors from one high school. A draft says "75 percent of our Central High seniors enrolled in college." What should change?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">Suppress or combine that group. With four students, the rate can identify individuals.</button>
+      <button class="opt" data-v="b">Nothing. The percentage is accurate.</button>
+      <button class="opt" data-v="c">Round it to 80 percent so it reads better.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 4 SCHOLARSHIP EVIDENCE ============ -->
+<section class="lesson" data-id="m4" data-num="05" data-title="Scholarship data as evidence" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 05 · 60 minutes · Core module</span>
+    <h2>Scholarship data as evidence</h2>
+    <p class="lede">Scholarships are the strongest evidence most Guide Right organizations hold. The dollars are documented, the recipients are countable, and the college outcomes that follow can be verified independently.</p>
+  </div>
+
+  <h3 style="margin-top:0">The evidence ladder</h3>
+  <p class="prose">Funders and grant boards weight higher rungs more heavily. Most chapters report rung 1 only. Climb as high as your records honestly allow.</p>
+  <div class="ladder">
+    <div class="rung"><div class="lv">Rung 5<br>Success</div><div><b>Persistence and completion</b><span>Recipients who return for a second year and who earn a credential.</span></div></div>
+    <div class="rung"><div class="lv">Rung 4<br>Access</div><div><b>Verified college enrollment</b><span>Seniors who enroll the fall after graduation, confirmed by records.</span></div></div>
+    <div class="rung"><div class="lv">Rung 3<br>Leverage</div><div><b>Outside aid secured</b><span>Additional scholarships and grants students won with chapter support.</span></div></div>
+    <div class="rung"><div class="lv">Rung 2<br>Reach</div><div><b>Share of seniors served</b><span>FAFSA completion and applications across the whole senior class.</span></div></div>
+    <div class="rung"><div class="lv">Rung 1<br>Activity</div><div><b>Awards made</b><span>Number of scholarships and total dollars awarded by the foundation.</span></div></div>
+  </div>
+
+  <h3>Formulas with their denominators</h3>
+  <p class="prose">Every rate states what it is a rate of. A reviewer should be able to rebuild it from your records.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Metric</th><th>Formula</th><th>Proof on file</th></tr></thead>
+    <tbody>
+      <tr><td>FAFSA completion rate</td><td><code>seniors with confirmed FAFSA ÷ seniors in program</code></td><td>Submission confirmation or school report</td></tr>
+      <tr><td>Average award</td><td><code>scholarship dollars awarded ÷ recipients</code></td><td>Scholarship ledger, payment records</td></tr>
+      <tr><td>Leverage ratio</td><td><code>outside aid secured ÷ scholarship dollars awarded</code></td><td>Award letters collected from students</td></tr>
+      <tr><td>Fall enrollment rate</td><td><code>seniors enrolled the fall after graduation ÷ seniors who graduated</code></td><td>Clearinghouse match or enrollment verification</td></tr>
+      <tr><td>Second year persistence</td><td><code>enrolled students who return for year two ÷ enrolled students</code></td><td>Clearinghouse match</td></tr>
+      <tr><td>Completion rate</td><td><code>credential earned within 6 years ÷ enrolled cohort</code></td><td>Clearinghouse degree record</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Verify college outcomes</h3>
+  <div class="prose">
+    <p>The National Student Clearinghouse receives enrollment and degree records from thousands of colleges. Its <strong>StudentTracker for Outreach</strong> service lets eligible outreach programs check where former participants enrolled, whether they persisted or transferred, and whether they earned a degree. Check eligibility and current pricing directly with the Clearinghouse.</p>
+    <ul>
+      <li><span class="tag t-bp">BEST PRACTICE</span> Submit each graduating cohort once a year and keep the returned file with your records.</li>
+      <li><span class="tag t-std">STANDARD</span> If you rely on student self report, label it "self reported" everywhere it appears.</li>
+      <li><span class="tag t-std">STANDARD</span> Include outcome tracking in the consent form families sign at enrollment.</li>
+    </ul>
+  </div>
+
+  <h3>Compare to a fair benchmark</h3>
+  <div class="prose">
+    <p>A rate means little alone. Place it beside a reference group using the same definition, the same year, and the closest geography: your district's or state's college going rate from the state education agency, reports from the Clearinghouse Research Center, or federal statistics from NCES. Name the source and year in the sentence.</p>
+  </div>
+  <div class="callout"><b>Say it honestly</b>Students who join Kappa League and apply for scholarships may already be headed to college. That is called selection. Write "Of our 15 seniors, 14 enrolled" and "compared with the district rate," not "our program caused." Reviewers trust chapters that state their limits.</div>
+
+  <div class="lab" id="schLab">
+    <div class="lab-head"><h3>Scholarship Evidence Lab</h3><span class="sample">SAMPLE DATA · REPLACE WITH YOUR RECORDS</span></div>
+    <div class="fields">
+      <div class="field"><label for="s_seniors">Seniors in program</label><input type="number" id="s_seniors" min="0" value="18"></div>
+      <div class="field"><label for="s_fafsa">Seniors with confirmed FAFSA</label><input type="number" id="s_fafsa" min="0" value="16"></div>
+      <div class="field"><label for="s_grad">Seniors who graduated</label><input type="number" id="s_grad" min="0" value="18"></div>
+      <div class="field"><label for="s_recip">Scholarship recipients</label><input type="number" id="s_recip" min="0" value="12"></div>
+      <div class="field"><label for="s_dollars">Scholarship dollars awarded</label><input type="number" id="s_dollars" min="0" step="100" value="18000"></div>
+      <div class="field"><label for="s_outside">Outside aid secured ($)</label><input type="number" id="s_outside" min="0" step="100" value="142000"><small>From award letters on file</small></div>
+      <div class="field"><label for="s_enrolled">Enrolled the following fall</label><input type="number" id="s_enrolled" min="0" value="15"></div>
+      <div class="field"><label for="s_persist">Returned for year two</label><input type="number" id="s_persist" min="0" value="13"><small>Of those enrolled; leave 0 if not yet known</small></div>
+      <div class="field"><label for="s_verify">How enrollment was confirmed</label><select id="s_verify"><option value="nsc">Clearinghouse match</option><option value="doc">College documents on file</option><option value="self">Student self report</option></select></div>
+      <div class="field"><label for="s_bench">Comparison rate (%)</label><input type="number" id="s_bench" min="0" max="100" step="0.1" value=""><small>From a named public source; leave blank if none</small></div>
+      <div class="field"><label for="s_benchsrc">Comparison source and year</label><input type="text" id="s_benchsrc" placeholder="e.g. State education agency, Class of 2025"></div>
+      <div class="field"><label for="s_year">Graduating class</label><input type="text" id="s_year" value="Class of 2026"></div>
+    </div>
+    <div class="out" id="s_out"></div>
+    <div class="eyebrow" style="margin-bottom:6px">Draft evidence paragraph</div>
+    <div class="gen" id="s_gen"></div>
+    <div class="flags" id="s_flags"></div>
+    <div class="row" style="margin-top:12px"><button class="btn ghost" id="s_copy">Copy paragraph</button></div>
+  </div>
+
+  <h3>Weak versus strong</h3>
+  <div class="grid2">
+    <div class="card weak"><span class="lbl">Weak</span><p>"Our foundation has given thousands of dollars in scholarships and our young men go on to great colleges."</p></div>
+    <div class="card strong"><span class="lbl">Strong</span><p>"For the Class of 2026, the foundation awarded $18,000 to 12 of 18 seniors. With mentor support on applications, those students secured $142,000 in additional aid. Fifteen of 18 graduates (83 percent) enrolled that fall, confirmed by Clearinghouse records." <em>(Sample figures.)</em></p></div>
+  </div>
+
+  <div class="kc" data-answer="b">
+    <div class="q">Which sentence is ready for a proposal?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">"Our scholarships cause our students to go to college."</button>
+      <button class="opt" data-v="b">"Of 18 seniors, 15 enrolled the following fall (Clearinghouse verified), compared with a district rate of [rate] (source, year)."</button>
+      <button class="opt" data-v="c">"Almost all of our students go to college."</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+  <div class="kc" data-answer="c">
+    <div class="q">Your foundation awarded $10,000. Students secured $60,000 in outside aid. What is the leverage ratio?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">0.17</button>
+      <button class="opt" data-v="b">7.0</button>
+      <button class="opt" data-v="c">6.0, meaning $6 of outside aid for every $1 the foundation awarded</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ SCHOLARSHIP COMPLIANCE ============ -->
+<section class="lesson" data-id="sch" data-num="06" data-title="Scholarship program compliance" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 06 · 40 minutes</span>
+    <h2>Scholarship program compliance</h2>
+    <p class="lede">Scholarships are a chapter's strongest evidence and its most regulated activity. The affiliated organization runs them under written procedures that a funder, an auditor, or the IRS could review.</p>
+  </div>
+  <div class="callout note"><b>Build note</b>Training, not legal or tax advice. Have a tax adviser and counsel review your procedures and eligibility criteria.</div>
+
+  <h3>Core requirements</h3>
+  <div class="prose"><ul>
+    <li><span class="tag t-std">STANDARD</span> The affiliated 501(c)(3) awards and pays scholarships. The chapter never does.</li>
+    <li><span class="tag t-std">STANDARD</span> Written selection procedures adopted by the organization's board. See the Template Kit.</li>
+    <li><span class="tag t-std">STANDARD</span> Criteria and deadline are published and applied the same way to every applicant.</li>
+    <li><span class="tag t-std">STANDARD</span> A selection committee scores each application with a rubric and records the scores.</li>
+    <li><span class="tag t-std">STANDARD</span> Committee members sign a conflict of interest statement each cycle and recuse from any applicant they are related to or know personally.</li>
+    <li><span class="tag t-std">STANDARD</span> Awards are paid to the college for the student's account after enrollment is confirmed.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Exclude relatives of the organization's directors, officers, and selection committee members, or follow your tax adviser's guidance.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Keep the full file for each cycle: notice, applications, scores, minutes, award letters, payment records, and enrollment confirmation.</li>
+  </ul></div>
+
+  <h3>Private foundation or public charity?</h3>
+  <div class="prose">
+    <p>The IRS treats these differently. A private foundation that makes grants to individuals for study generally needs IRS advance approval of its selection procedures under Internal Revenue Code section 4945(g). A public charity does not seek that approval, but it still must award scholarships for charitable purposes using objective criteria. Your organization's IRS determination letter states its classification. Confirm the rules that apply with your tax adviser.</p>
+  </div>
+
+  <h3>Tax notes for recipients</h3>
+  <div class="prose">
+    <p>Under Internal Revenue Code section 117, scholarship amounts a degree candidate uses for tuition, required fees, books, supplies, and equipment are generally excluded from income. Amounts used for room, board, or travel may be taxable to the student. The award letter should tell recipients to consult a tax adviser.</p>
+  </div>
+
+  <h3>Eligibility criteria and the current legal climate</h3>
+  <div class="prose">
+    <p>Scholarship and grant programs that limit eligibility by race have faced federal lawsuits under Section 1981 of the Civil Rights Act of 1866 and Title VI of the Civil Rights Act of 1964. Examples include a suit filed in March 2025 against the American Chemical Society's scholars program, a suit reported in April 2026 against the Congressional Black Caucus Foundation's spouses education scholarship, and the Fearless Fund case, which ended with the fund closing its grant program. Several of these cases settled before a final ruling.</p>
+    <ul>
+      <li><span class="tag t-std">STANDARD</span> Counsel reviews every eligibility criterion before each cycle. Record the review date in the selection procedures.</li>
+      <li><span class="tag t-std">STANDARD</span> Selection uses only the written criteria.</li>
+      <li><span class="tag t-bp">BEST PRACTICE</span> Review application terms too. Plaintiffs have argued that accounts, terms of use, and award agreements create contracts covered by Section 1981.</li>
+    </ul>
+    <p>The law in this area is changing quickly. Check with counsel before every cycle.</p>
+  </div>
+
+  <div class="kc" data-answer="b">
+    <div class="q">A selection committee member's nephew applies for the scholarship. What happens?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">The member scores him and gives an average score to stay fair.</button>
+      <button class="opt" data-v="b">Follow the written procedures. If they exclude relatives of committee members, he is not eligible. Either way, the member recuses and the recusal is recorded.</button>
+      <button class="opt" data-v="c">The committee decides informally since the policy is silent.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+  <div class="kc" data-answer="b">
+    <div class="q">How should a $2,000 scholarship be paid?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">A check to the student at the awards ceremony</button>
+      <button class="opt" data-v="b">To the college for the student's account after enrollment is confirmed</button>
+      <button class="opt" data-v="c">To the student's parent</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ NATIONAL DATA ============ -->
+<section class="lesson" data-id="nat" data-num="07" data-title="Shared data standard" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 07 · 35 minutes</span>
+    <h2>Shared data standard</h2>
+    <p class="lede">When every Guide Right organization counts the same things the same way, results can be combined across chapters, provinces, and the nation. Your data profile can then stand on its own and also count toward a larger Guide Right story funders recognize.</p>
+  </div>
+  <div class="callout note"><b>Build note</b>A proposed common standard. Definitions match Modules 04 and 05. Adopt it as written so your numbers can be combined with other organizations' numbers.</div>
+
+  <h3>Core metric set</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Metric</th><th>Definition</th><th>Verification</th></tr></thead>
+    <tbody>
+      <tr><td><b>Kappa Leaguers enrolled</b></td><td>Students on the roster on the count date</td><td>Roster with unique IDs</td></tr>
+      <tr><td><b>Active Leaguers</b></td><td>Enrolled students meeting the shared attendance threshold</td><td>Attendance log</td></tr>
+      <tr><td><b>Sessions held</b></td><td>Scheduled program sessions delivered</td><td>Session log</td></tr>
+      <tr><td><b>Active mentors</b></td><td>Mentors who logged program hours in the year</td><td>Mentor roster and hour log</td></tr>
+      <tr><td><b>Mentors with current youth protection training</b></td><td>Active mentors with training on file</td><td>Training records</td></tr>
+      <tr><td><b>Mentor hours</b></td><td>Hours logged with students</td><td>Hour log</td></tr>
+      <tr><td><b>Seniors in program</b></td><td>Enrolled 12th graders</td><td>Roster</td></tr>
+      <tr><td><b>Seniors with confirmed FAFSA</b></td><td>Seniors with submission confirmation</td><td>Confirmation or school report</td></tr>
+      <tr><td><b>Seniors graduating</b></td><td>Seniors earning a diploma that year</td><td>School confirmation, or self report labeled as such</td></tr>
+      <tr><td><b>Scholarship recipients and dollars</b></td><td>Awards paid by the affiliated 501(c)(3)</td><td>Ledger and payment records</td></tr>
+      <tr><td><b>Outside aid secured</b></td><td>Other scholarships and grants students won</td><td>Award letters</td></tr>
+      <tr><td><b>Fall college enrollment</b></td><td>Graduates enrolled the fall after graduation</td><td>Clearinghouse match, college documents, or self report, labeled</td></tr>
+      <tr><td><b>Second year persistence</b></td><td>Enrolled students who return for year two</td><td>Clearinghouse match or college documents</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Reporting rules</h3>
+  <ol class="steps">
+    <li><span><span class="tag t-std">STANDARD</span> Report counts with numerators and denominators, never percentages alone.</span></li>
+    <li><span><span class="tag t-std">STANDARD</span> Report group totals only. No student names or IDs leave the chapter.</span></li>
+    <li><span><span class="tag t-std">STANDARD</span> State the verification method for each outcome metric.</span></li>
+    <li><span><span class="tag t-std">STANDARD</span> Close the year on the same date each year, and have the organization's authorized officer attest the profile before it is shared.</span></li>
+    <li><span><span class="tag t-bp">BEST PRACTICE</span> When provincial or national leaders request Guide Right results, submit this same profile so every organization's figures line up. The National Guide Right Commission's member portal at kapsi-ngrc.org is one place such results could be gathered.</span></li>
+  </ol>
+
+  <h3>Pool the counts, never average the percentages</h3>
+  <p class="prose">When results are combined, the combined rate is total enrolled divided by total graduates across all organizations. Averaging each chapter's percentage gives a chapter of 10 the same weight as a chapter of 50 and misstates the result.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Fictional example</th><th>Enrolled</th><th>Graduates</th><th>Rate</th></tr></thead>
+    <tbody>
+      <tr><td>Chapter A</td><td class="tabnum">9</td><td class="tabnum">10</td><td class="tabnum">90%</td></tr>
+      <tr><td>Chapter B</td><td class="tabnum">30</td><td class="tabnum">50</td><td class="tabnum">60%</td></tr>
+      <tr><td>Average of the two rates (wrong)</td><td></td><td></td><td class="tabnum">75%</td></tr>
+      <tr><td><b>Pooled rate (right)</b></td><td class="tabnum"><b>39</b></td><td class="tabnum"><b>60</b></td><td class="tabnum"><b>65%</b></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Public reporting</h3>
+  <p class="prose">Anyone publishing combined results suppresses any breakdown, such as one chapter, school, or subgroup, that falls under the small group threshold.</p>
+  <div class="tpl-title">Combined results statement</div>
+  <div class="tpl" id="tplNat"><button class="btn ghost copy" data-copy="tplNat">Copy</button>In the [year] program year, [N] chapters reported [enrolled] Kappa Leaguers mentored by [mentors] trained mentors. Of [graduates] seniors who graduated, [enrolled in college] ([rate] percent) enrolled in college the following fall, with [verified count] confirmed by enrollment records. Affiliated organizations awarded $[dollars] in scholarships, and students secured $[outside aid] in additional aid.</div>
+
+  <div class="kc" data-answer="b">
+    <div class="q">Organization A reports 4 of 5 graduates enrolled. Organization B reports 20 of 40. What combined rate should a provincial report use?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">65 percent, the average of 80 and 50</button>
+      <button class="opt" data-v="b">24 of 45, or 53 percent</button>
+      <button class="opt" data-v="c">80 percent, the higher chapter rate</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 5 NEED ============ -->
+<section class="lesson" data-id="m5" data-num="08" data-title="The community need statement" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 08 · 35 minutes</span>
+    <h2>The community need statement</h2>
+    <p class="lede">The need statement answers one question for the reviewer: why this program, here, now. It uses public data about the community, then your own data about the young men you serve.</p>
+  </div>
+  <div class="prose">
+    <h3 style="margin-top:0">Public data sources</h3>
+    <ul>
+      <li><strong>U.S. Census Bureau, American Community Survey</strong> at data.census.gov: educational attainment, household income, poverty, and family composition by county, city, ZIP code, or school district.</li>
+      <li><strong>State education agency report cards</strong>: graduation rates, college readiness, and college going rates by district and campus.</li>
+      <li><strong>NCES</strong>: national education statistics and college data for comparison.</li>
+      <li><strong>Local workforce boards and community foundations</strong>: regional needs assessments that funders already trust.</li>
+    </ul>
+    <p><span class="tag t-std">STANDARD</span> Every number carries its source, year, and geography in the sentence or a footnote.</p>
+
+    <h3>Four part structure</h3>
+  </div>
+  <ol class="steps">
+    <li><span><strong>The gap.</strong> One or two numbers that show the difference between where young men in your area are and where they could be.</span></li>
+    <li><span><strong>Who it affects locally.</strong> The schools, neighborhoods, and grade levels you serve.</span></li>
+    <li><span><strong>Why it persists.</strong> Barriers such as limited college guidance, cost, or few mentors with college experience. Cite where you can.</span></li>
+    <li><span><strong>Why you.</strong> The chapter's assets: trained mentors who are college graduates, a structured curriculum, and a program model the fraternity has run for generations.</span></li>
+  </ol>
+  <div class="callout"><b>Frame from strength</b>Describe the young men as capable students who deserve access, not as problems to fix. Reviewers respond to dignity, and so do families who read your materials.</div>
+
+  <div class="tpl-title">Need statement template</div>
+  <div class="tpl" id="tplNeed"><button class="btn ghost copy" data-copy="tplNeed">Copy</button>In [county or city], [percent] of adults age 25 and older hold a bachelor's degree, compared with [percent] statewide ([source], [year]). At [schools served], [percent] of graduates enrolled in college the following fall ([state report card], [year]). Students in these schools report limited access to [barrier], and [local evidence of barrier].
+
+The [chapter name] Chapter serves [number] young men in grades [range] through Kappa League, pairing them with [number] trained mentors who are college graduates. [One sentence of your own outcome data.] This proposal will [what the grant makes possible] so that [outcome for students].</div>
+
+  <div class="kc" data-answer="a">
+    <div class="q">Which need statement detail is missing in "Many students in our area do not go to college"?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">A number, its source, its year, and the geography it describes</button>
+      <button class="opt" data-v="b">A stronger adjective</button>
+      <button class="opt" data-v="c">The chapter's founding date</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 6 LOGIC MODEL ============ -->
+<section class="lesson" data-id="m6" data-num="09" data-title="Program design and the logic model" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 09 · 45 minutes</span>
+    <h2>Program design and the logic model</h2>
+    <p class="lede">A logic model shows the reviewer how your resources become activities and how activities become results. It keeps the narrative, budget, and evaluation telling the same story.</p>
+  </div>
+
+  <div class="tblwrap"><table>
+    <thead><tr><th>Inputs</th><th>Activities</th><th>Outputs</th><th>Short term outcomes</th><th>Long term outcomes</th></tr></thead>
+    <tbody><tr>
+      <td>Trained mentors; Seven Phases curriculum; meeting space; scholarship fund; partner schools</td>
+      <td>Monthly sessions; FAFSA and application workshops; college tours; Kamp Kappa; one to one mentoring</td>
+      <td>Sessions held; students attending; mentor hours; FAFSAs completed; applications submitted</td>
+      <td>College knowledge gains; FAFSA completion; scholarship and aid secured</td>
+      <td>College enrollment; second year persistence; degree completion</td>
+    </tr></tbody>
+  </table></div>
+  <p class="prose" style="font-size:.9rem;color:var(--muted)">Sample: a Kappa League college pathway model. Replace with your chapter's program.</p>
+
+  <h3>Outputs or outcomes?</h3>
+  <div class="grid2">
+    <div class="card"><h4>Outputs count what you did</h4><p>"Held 9 monthly sessions." "Logged 640 mentor hours." Necessary, but they do not show change.</p></div>
+    <div class="card"><h4>Outcomes describe what changed</h4><p>"Seniors completing the FAFSA rose from 11 of 17 to 16 of 18." Outcomes are what grant boards fund.</p></div>
+  </div>
+
+  <h3>Write SMART objectives</h3>
+  <p class="prose">Specific, measurable, achievable, relevant, and time bound. Each objective names who, how many, what change, by when, and how you will know.</p>
+  <div class="grid2">
+    <div class="card weak"><span class="lbl">Weak</span><p>"Help more seniors get ready for college."</p></div>
+    <div class="card strong"><span class="lbl">Strong</span><p>"By March 31, 2027, at least 90 percent of Kappa League seniors will complete the FAFSA, confirmed by submission records."</p></div>
+  </div>
+
+  <div class="lab">
+    <div class="lab-head"><h3>Objective builder</h3><span class="eyebrow">Fill the blanks</span></div>
+    <div class="fields">
+      <div class="field"><label for="o_when">By when</label><input type="text" id="o_when" value="May 31, 2027"></div>
+      <div class="field"><label for="o_target">Target</label><input type="text" id="o_target" value="at least 85 percent"></div>
+      <div class="field"><label for="o_who">Of whom</label><input type="text" id="o_who" value="Kappa League participants in grades 9 to 12"></div>
+      <div class="field"><label for="o_what">Will</label><input type="text" id="o_what" value="complete all iGrad financial literacy modules for their tier"></div>
+      <div class="field"><label for="o_how">As measured by</label><input type="text" id="o_how" value="the chapter iGrad tracker, verified by the Program Director"></div>
+    </div>
+    <div class="gen" id="o_out" style="margin-top:14px"></div>
+  </div>
+
+  <div class="kc" data-answer="b">
+    <div class="q">"Hosted 3 college tours with 42 students attending." Is this an output or an outcome?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">Outcome</button>
+      <button class="opt" data-v="b">Output. It counts activity, not change in students.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 7 NARRATIVE ============ -->
+<section class="lesson" data-id="m7" data-num="10" data-title="Writing the narrative" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 10 · 50 minutes</span>
+    <h2>Writing the narrative</h2>
+    <p class="lede">Reviewers read many proposals in a short window. Make yours easy to score: use their headings, answer in order, and put the evidence where they look for it.</p>
+  </div>
+
+  <h3 style="margin-top:0">Standard sections and what reviewers look for</h3>
+  <details><summary>Executive summary</summary><div><p>Who you are, the need, what you will do, for how many students, what will change, and the amount requested. Write it last. Keep it to the length the funder sets, often a half page.</p></div></details>
+  <details><summary>Organization background</summary><div><p>The chapter's history with Guide Right, years operating Kappa League, students served, and two or three verified results. Lead with capacity to deliver, not with history alone.</p></div></details>
+  <details><summary>Statement of need</summary><div><p>Module 08. Public data first, then your own students.</p></div></details>
+  <details><summary>Goals and objectives</summary><div><p>Module 09. Two to four SMART objectives that match your evaluation plan line for line.</p></div></details>
+  <details><summary>Program description and methods</summary><div><p>What happens, how often, who leads it, where, and how students are recruited and retained. Include the mentor screening and youth protection practice.</p></div></details>
+  <details><summary>Evaluation plan</summary><div><p>Module 12. Each objective, its indicator, its data source, and when it is measured.</p></div></details>
+  <details><summary>Sustainability</summary><div><p>How the program continues after this grant: chapter dues allocation, other funders, partners, and volunteer capacity.</p></div></details>
+  <details><summary>Budget and budget narrative</summary><div><p>Module 11. Every line explained and tied to an activity.</p></div></details>
+
+  <h3>Craft rules</h3>
+  <ul class="steps">
+    <li><span><span class="tag t-std">STANDARD</span> Answer every question the funder asks, in their order, under their headings.</span></li>
+    <li><span><span class="tag t-std">STANDARD</span> Every figure matches the data profile exactly, down to the denominator.</span></li>
+    <li><span><span class="tag t-bp">BEST PRACTICE</span> Lead each section with its strongest sentence. One idea per paragraph.</span></li>
+    <li><span><span class="tag t-bp">BEST PRACTICE</span> Use the funder's own words for their priorities so the reviewer can match you to the rubric.</span></li>
+    <li><span><span class="tag t-bp">BEST PRACTICE</span> Pair one consented student story with the numbers. The story shows the person; the data shows it is not a lone case.</span></li>
+    <li><span><span class="tag t-opt">OPTIONAL</span> One simple chart of a three year trend, if the funder allows attachments.</span></li>
+  </ul>
+
+  <h3>Using AI tools responsibly</h3>
+  <div class="prose">
+    <p>AI writing tools can help outline, tighten language, and check a draft against the funder's questions. They also invent statistics, sources, and quotes that look real.</p>
+    <ul>
+      <li><span class="tag t-std">STANDARD</span> A person checks every number, name, date, and citation against the original record.</li>
+      <li><span class="tag t-std">STANDARD</span> Never paste student names or records into a public AI tool.</li>
+      <li><span class="tag t-std">STANDARD</span> Follow any funder rule on AI use and disclose when asked.</li>
+    </ul>
+  </div>
+  <div class="callout gate"><b>Release gate</b>A member outside the writing team reads the full application against the funder's instructions and the data profile before submission. The chapter's authorized signer approves it in writing.</div>
+
+  <div class="kc" data-answer="c">
+    <div class="q">A funder lists five questions. Your draft uses your own section order because it tells the story better. What is the risk?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">None. Reviewers prefer creative structure.</button>
+      <button class="opt" data-v="b">The proposal will be too short.</button>
+      <button class="opt" data-v="c">Reviewers scoring against the rubric may not find your answers and score them as missing.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 8 BUDGET ============ -->
+<section class="lesson" data-id="m8" data-num="11" data-title="Budgets and the budget narrative" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 11 · 50 minutes</span>
+    <h2>Budgets and the budget narrative</h2>
+    <p class="lede">The budget is the narrative written in dollars. A reviewer should be able to find every activity from your program description on a budget line.</p>
+  </div>
+
+  <h3 style="margin-top:0">Key terms</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><b>Direct costs</b></td><td>Costs tied to the program: supplies, travel for college tours, curriculum, stipends, camp fees.</td></tr>
+      <tr><td><b>Indirect costs</b></td><td>Shared costs such as accounting, insurance, and administration that support the program but are not tied to one activity.</td></tr>
+      <tr><td><b>De minimis rate</b></td><td>Under the federal Uniform Guidance (2 CFR 200) as revised in 2024, an organization without a negotiated indirect rate may charge up to 15 percent of modified total direct costs. Private funders set their own limits.</td></tr>
+      <tr><td><b>Modified total direct costs (MTDC)</b></td><td>The base for that rate. It excludes items such as participant support costs, scholarships, equipment, rent, and the portion of each subaward above $50,000.</td></tr>
+      <tr><td><b>Participant support costs</b></td><td>Costs paid for participants, not staff: stipends, travel, registration, and camp fees for students.</td></tr>
+      <tr><td><b>Equipment</b></td><td>Under the revised Uniform Guidance, items costing $10,000 or more per unit with a useful life over one year.</td></tr>
+      <tr><td><b>In kind</b></td><td>Donated goods, space, or volunteer time. Value it with a documented rate and keep the records.</td></tr>
+      <tr><td><b>Match</b></td><td>Funds or in kind the applicant contributes when a funder requires cost sharing. Only promise match you can document.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout"><b>Scholarships in a grant</b>Some funders will not pay scholarships directly; others fund only scholarships. Ask first. When scholarships are included, state the selection criteria, who decides, and how funds go to the college rather than to the student.</div>
+
+  <div class="lab" id="budLab">
+    <div class="lab-head"><h3>Budget Lab</h3><span class="sample">SAMPLE VALUES · ENTER YOUR OWN</span></div>
+    <div class="fields">
+      <div class="field"><label for="b_pers">Personnel and stipends ($)</label><input type="number" id="b_pers" min="0" step="100" value="6000"><small>Coordinator stipend, contracted tutors</small></div>
+      <div class="field"><label for="b_supp">Supplies and curriculum ($)</label><input type="number" id="b_supp" min="0" step="100" value="2400"></div>
+      <div class="field"><label for="b_trav">Staff and mentor travel ($)</label><input type="number" id="b_trav" min="0" step="100" value="1500"></div>
+      <div class="field"><label for="b_cont">Contractual services ($)</label><input type="number" id="b_cont" min="0" step="100" value="1800"><small>Bus rental, speakers, data matching</small></div>
+      <div class="field"><label for="b_part">Participant support ($)</label><input type="number" id="b_part" min="0" step="100" value="5200"><small>Student tour travel, camp fees. Excluded from MTDC.</small></div>
+      <div class="field"><label for="b_sch">Scholarships ($)</label><input type="number" id="b_sch" min="0" step="100" value="10000"><small>Excluded from MTDC.</small></div>
+      <div class="field"><label for="b_rate">Indirect rate (%)</label><input type="number" id="b_rate" min="0" max="100" step="0.5" value="10"><small>Use the funder's limit. Federal de minimis is up to 15.</small></div>
+      <div class="field"><label for="b_hours">Volunteer mentor hours (in kind)</label><input type="number" id="b_hours" min="0" value="640"></div>
+      <div class="field"><label for="b_hrate">Documented hourly value ($)</label><input type="number" id="b_hrate" min="0" step="0.01" value=""><small>Cite your source, such as a published state volunteer time value</small></div>
+    </div>
+    <div class="out" id="b_out"></div>
+    <div class="flags" id="b_flags"></div>
+  </div>
+
+  <h3>Write each budget line as a calculation</h3>
+  <div class="grid2">
+    <div class="card weak"><span class="lbl">Weak</span><p>"Travel: $5,200"</p></div>
+    <div class="card strong"><span class="lbl">Strong</span><p>"College tours: 2 tours × 26 students and mentors × $100 per person for charter bus and meals = $5,200. Tours support Objective 2 (application completion)."</p></div>
+  </div>
+  <div class="callout gate"><b>Release gate</b>The chapter treasurer reviews the budget against the chapter's books and signs off before submission.</div>
+
+  <div class="kc" data-answer="a">
+    <div class="q">A federal application has $20,000 in direct costs, of which $8,000 is participant support. The chapter uses the de minimis rate at 15 percent. What is the most indirect cost it may request?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">$1,800 (15 percent of the $12,000 MTDC base)</button>
+      <button class="opt" data-v="b">$3,000 (15 percent of $20,000)</button>
+      <button class="opt" data-v="c">$1,200</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 9 EVALUATION ============ -->
+<section class="lesson" data-id="m9" data-num="12" data-title="Evaluation, reporting, and stewardship" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 12 · 40 minutes</span>
+    <h2>Evaluation, reporting, and stewardship</h2>
+    <p class="lede">Your next grant is won in the report on this one. Chapters that report on time with clean data get renewed.</p>
+  </div>
+
+  <h3 style="margin-top:0">Evaluation plan</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Objective</th><th>Indicator</th><th>Tool</th><th>When</th><th>Who</th></tr></thead>
+    <tbody>
+      <tr><td>FAFSA completion</td><td>Percent of seniors with confirmed submission</td><td>Senior tracker plus confirmation</td><td>Monthly Oct to Mar</td><td>Scholarship chair</td></tr>
+      <tr><td>College knowledge</td><td>Average gain on a short college knowledge survey</td><td>Pre and post survey</td><td>Sept and May</td><td>Program Director</td></tr>
+      <tr><td>Participation</td><td>Percent of roster meeting the active definition</td><td>Attendance log</td><td>Each session; summarized quarterly</td><td>Kappa League Director</td></tr>
+      <tr><td>College enrollment</td><td>Percent of graduates enrolled the next fall</td><td>Clearinghouse match</td><td>Annually in winter</td><td>Data lead</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>The annual data cycle</h3>
+  <ol class="steps">
+    <li><span><strong>August:</strong> Update consent forms, roster IDs, and the data dictionary for the new program year.</span></li>
+    <li><span><strong>September:</strong> Baseline survey and enrollment snapshot.</span></li>
+    <li><span><strong>October to March:</strong> FAFSA, applications, and scholarship cycle tracking.</span></li>
+    <li><span><strong>May:</strong> Post survey, scholarship awards, senior plans recorded.</span></li>
+    <li><span><strong>June:</strong> Close the year. Produce the one page data profile.</span></li>
+    <li><span><strong>Winter:</strong> Submit the graduating cohort for enrollment verification and add results to the profile.</span></li>
+  </ol>
+
+  <h3>Stewardship</h3>
+  <div class="prose"><ul>
+    <li><span class="tag t-std">STANDARD</span> Track restricted funds separately and spend them only as approved. Request written approval before moving funds between lines if the funder requires it.</li>
+    <li><span class="tag t-std">STANDARD</span> Put every report deadline on a shared calendar with two owners.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Send a thank you within a week of the award, and a short impact update between formal reports.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Invite funders to a session, a scholarship ceremony, or Kamp Kappa.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Report shortfalls plainly with what you learned and what changes next year.</li>
+  </ul></div>
+
+  <div class="kc" data-answer="b">
+    <div class="q">Midyear, you need to move $800 from supplies to student travel. The award letter requires approval for line changes. What do you do?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">Move it and explain in the final report.</button>
+      <button class="opt" data-v="b">Request written approval from the funder before spending.</button>
+      <button class="opt" data-v="c">Cover it with personal funds.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 10 GRANT BOARD ============ -->
+<section class="lesson" data-id="m10" data-num="13" data-title="Serving on your grant board" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 13 · 60 minutes · Board members</span>
+    <h2>Serving on your grant board</h2>
+    <p class="lede">Each Guide Right foundation or affiliated 501(c)(3) has its own board or grants committee. That board approves the applications the organization sends to outside funders and reviews the proposals the organization receives. Fair, consistent decisions protect the organization, protect the chapter, and direct funds to programs that can show results.</p>
+  </div>
+
+  <h3 style="margin-top:0">Two jobs of the grant board</h3>
+  <div class="grid2">
+    <div class="card"><h4>Approving outgoing applications</h4><p>Confirms fit, budget, data, and commitments before the authorized officer signs an application to an outside funder. Uses the approval memo and board resolution in the Template Kit.</p></div>
+    <div class="card"><h4>Reviewing incoming proposals</h4><p>Scores requests for the organization's own funds, such as program requests from chapter Guide Right leaders or community partners, with a shared rubric. Records decisions and monitors results.</p></div>
+  </div>
+
+  <h3>Before approving an outgoing application</h3>
+  <ul class="checklist" data-store="m10-out">
+    <li><label><input type="checkbox" id="ao1"><span>The funder's priorities fit, and the organization meets eligibility</span></label></li>
+    <li><label><input type="checkbox" id="ao2"><span>The budget matches the organization's books and carries the treasurer's sign off</span></label></li>
+    <li><label><input type="checkbox" id="ao3"><span>Every figure matches the current data profile</span></label></li>
+    <li><label><input type="checkbox" id="ao4"><span>Match, reporting, and volunteer commitments are realistic</span></label></li>
+    <li><label><input type="checkbox" id="ao5"><span>Consents and media releases are on file for any student named or pictured</span></label></li>
+    <li><label><input type="checkbox" id="ao6"><span>A board resolution or recorded vote authorizes submission, with recusals noted</span></label></li>
+  </ul>
+  <div class="meter" id="m10-out-meter"></div>
+
+  <h3>Board roles for reviewing proposals</h3>
+  <div class="grid3">
+    <div class="card"><h4>Board or committee chair</h4><p>Runs the cycle, assigns reviewers, enforces recusal, and leads calibration.</p></div>
+    <div class="card"><h4>Program reviewers</h4><p>Score need, design, and evaluation independently before any discussion.</p></div>
+    <div class="card"><h4>Finance reviewer</h4><p>Checks budget math, allowable costs, and the applicant's capacity to manage funds.</p></div>
+    <div class="card"><h4>Data reviewer</h4><p>Confirms metrics have definitions, denominators, sources, and protected student privacy.</p></div>
+  </div>
+
+  <h3>Review process</h3>
+  <ol class="steps">
+    <li><span><strong>Intake screen.</strong> Eligibility, completeness, and required documents. Incomplete proposals get one chance to fix gaps by a set date.</span></li>
+    <li><span><strong>Conflict check.</strong> Each reviewer discloses conflicts before seeing proposals.</span></li>
+    <li><span><strong>Independent scoring.</strong> At least two reviewers score each proposal alone, with written comments for each criterion.</span></li>
+    <li><span><strong>Calibration meeting.</strong> Discuss any criterion where scores differ by two or more points. Reviewers may revise with a stated reason.</span></li>
+    <li><span><strong>Decision memo.</strong> Scores, decisions, and any conditions recorded and approved by the board.</span></li>
+    <li><span><strong>Feedback.</strong> Every applicant receives written comments, funded or not.</span></li>
+    <li><span><strong>Monitoring.</strong> Midyear progress report and final report against the approved objectives.</span></li>
+  </ol>
+
+  <div class="callout gate"><b>Release gate: conflict of interest</b>A reviewer recuses from any proposal they helped write, any proposal they lead or will be paid from, and any proposal in which a relative or business partner has a role or would benefit. Recusals are recorded in the minutes.</div>
+
+  <h3>Scoring rubric</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Criterion</th><th>Weight</th><th>A 5 looks like</th><th>A 1 looks like</th></tr></thead>
+    <tbody>
+      <tr><td><b>Need and alignment</b></td><td class="tabnum">20</td><td>Sourced local data; clear fit with the organization's mission and Guide Right priorities</td><td>General statements without sources</td></tr>
+      <tr><td><b>Program design</b></td><td class="tabnum">20</td><td>Logic model ties activities to outcomes; youth protection described</td><td>Activities listed without purpose</td></tr>
+      <tr><td><b>Data and evidence</b></td><td class="tabnum">25</td><td>Defined metrics, denominators, verified college outcomes, honest limits</td><td>Unverified totals or claims of causation</td></tr>
+      <tr><td><b>Evaluation plan</b></td><td class="tabnum">15</td><td>Every objective has an indicator, tool, timing, and owner</td><td>"We will survey students"</td></tr>
+      <tr><td><b>Budget</b></td><td class="tabnum">10</td><td>Line items calculated and tied to activities</td><td>Round numbers without explanation</td></tr>
+      <tr><td><b>Capacity and sustainability</b></td><td class="tabnum">10</td><td>Named leads, reporting history, plan beyond the grant</td><td>Program depends on one person or one award</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose" style="font-size:.9rem;color:var(--muted)">Build note: weights and anchors are a starting point. Each board adopts or adjusts them before its first cycle and publishes them with its call for proposals.</p>
+
+  <div class="lab" id="revLab">
+    <div class="lab-head"><h3>Grant Board Review Lab</h3><span class="sample">FICTIONAL PROPOSAL FOR PRACTICE</span></div>
+    <div class="excerpt">
+      <h4>Request</h4><p>The chapter's Kappa League program team requests $12,000 from the foundation's program fund for a college pathway year.</p>
+      <h4>Need</h4><p>"Many young men in our city do not attend college. Our schools face many challenges."</p>
+      <h4>Program</h4><p>"Monthly Kappa League sessions, two college tours, a FAFSA night, and mentoring by 14 trained mentors who complete annual youth protection training. Logic model attached."</p>
+      <h4>Evidence</h4><p>"Last year 17 of 20 seniors (85 percent) enrolled in college the following fall, based on student self report collected in August. The foundation awarded $9,000 to 9 seniors."</p>
+      <h4>Evaluation</h4><p>"We will track FAFSA completion monthly and attendance each session. Objectives: 90 percent FAFSA completion by March 31; 75 percent of roster meeting the active definition."</p>
+      <h4>Budget</h4><p>"Tours $5,000. Supplies $2,000. FAFSA night $1,000. Scholarships $4,000." No calculations shown.</p>
+      <h4>Capacity</h4><p>"Program led by the Guide Right Director and the Kappa League Director. Program has run continuously for 11 years. No prior grant reports."</p>
+    </div>
+    <div class="rub" id="rub" style="margin-top:16px"></div>
+    <div class="total"><span class="v tabnum" id="rubTotal">0</span><span>of 100 weighted points</span><span class="pill warn" id="rubPill">Score every criterion</span></div>
+    <div class="row" style="margin-top:12px"><button class="btn ghost" id="rubReveal">Compare with calibrated scores</button></div>
+    <div id="rubKey" class="gen" style="margin-top:12px" hidden></div>
+  </div>
+
+  <h3>Reviewer conduct</h3>
+  <div class="prose"><ul>
+    <li><span class="tag t-std">STANDARD</span> Score what is on the page. Do not credit what you personally know about a program.</li>
+    <li><span class="tag t-std">STANDARD</span> Write one sentence of evidence for every score you give.</li>
+    <li><span class="tag t-std">STANDARD</span> Keep proposals and student data confidential.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Separate polish from substance. A plainly written proposal with verified data can outscore a polished one with unverified claims.</li>
+    <li><span class="tag t-bp">BEST PRACTICE</span> Offer coaching to promising proposals that fall short, so programs grow stronger each cycle.</li>
+    <li><span class="tag t-opt">OPTIONAL</span> Use the reviewer scoring sheet and decision memo in the Template Kit to keep a clean record.</li>
+  </ul></div>
+
+  <div class="kc" data-answer="c">
+    <div class="q">You know the applicant program well and believe it is excellent, but the proposal reports no outcome data. How do you score Data and evidence?</div>
+    <div class="opts">
+      <button class="opt" data-v="a">High, because you have seen the program yourself.</button>
+      <button class="opt" data-v="b">Skip the criterion.</button>
+      <button class="opt" data-v="c">Score only what the proposal shows, and note in your comments what evidence would raise the score.</button>
+    </div>
+    <div class="fb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 11 CAPSTONE ============ -->
+<section class="lesson" data-id="m11" data-num="14" data-title="Capstone: the Grant Ready Packet" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Module 14 · 60 to 90 minutes</span>
+    <h2>Capstone: the Grant Ready Packet</h2>
+    <p class="lede">Assemble these once, refresh them each June, and every future application starts most of the way done. The Sample Proposal in the library shows the finished pieces together.</p>
+  </div>
+  <ul class="checklist" data-store="m11-packet">
+    <li><label><input type="checkbox" id="p1"><span><span class="tag t-std">STANDARD</span> Document library current (Module 01)</span></label></li>
+    <li><label><input type="checkbox" id="p11"><span><span class="tag t-std">STANDARD</span> Signed MOU between the chapter and the affiliated 501(c)(3), and a board resolution template (Module 02)</span></label></li>
+    <li><label><input type="checkbox" id="p2"><span><span class="tag t-std">STANDARD</span> Prospect list with fit ratings for at least five funders (Module 03)</span></label></li>
+    <li><label><input type="checkbox" id="p3"><span><span class="tag t-std">STANDARD</span> Data dictionary and one page data profile with up to three years of history (Module 04)</span></label></li>
+    <li><label><input type="checkbox" id="p4"><span><span class="tag t-std">STANDARD</span> Scholarship evidence paragraph with denominators and verification method (Module 05)</span></label></li>
+    <li><label><input type="checkbox" id="p12"><span><span class="tag t-std">STANDARD</span> Board adopted scholarship selection procedures, reviewed by counsel (Module 06)</span></label></li>
+    <li><label><input type="checkbox" id="p5"><span><span class="tag t-std">STANDARD</span> Need statement with sourced public data (Module 08)</span></label></li>
+    <li><label><input type="checkbox" id="p6"><span><span class="tag t-std">STANDARD</span> Logic model and two to four SMART objectives (Module 09)</span></label></li>
+    <li><label><input type="checkbox" id="p7"><span><span class="tag t-std">STANDARD</span> Boilerplate organization background and program description (Module 10)</span></label></li>
+    <li><label><input type="checkbox" id="p8"><span><span class="tag t-std">STANDARD</span> Template budget with calculated lines and narrative (Module 11)</span></label></li>
+    <li><label><input type="checkbox" id="p9"><span><span class="tag t-std">STANDARD</span> Evaluation plan and annual data calendar (Module 12)</span></label></li>
+    <li><label><input type="checkbox" id="p10"><span><span class="tag t-gate">RELEASE GATE</span> Consent and media releases on file for every student named or pictured</span></label></li>
+  </ul>
+  <div class="meter" id="m11-packet-meter"></div>
+
+  <h3>Final assessment</h3>
+  <p class="prose">Ten questions. A score of 8 or higher completes the course.</p>
+  <div id="final"></div>
+  <div class="total"><span class="v tabnum" id="finalScore">0 / 10</span><span class="pill warn" id="finalPill">Answer all ten</span></div>
+
+  <div id="cert" class="cert" hidden>
+    <h3>Your certificate</h3>
+    <div class="fields">
+      <div class="field"><label for="cert_name">Name on certificate</label><input type="text" id="cert_name" autocomplete="name"></div>
+      <div class="field"><label for="cert_org">Organization</label><input type="text" id="cert_org"></div>
+    </div>
+    <canvas id="certCanvas" width="1600" height="1100" role="img" aria-label="Certificate of completion"></canvas>
+    <div class="row"><button class="btn" id="certSave" hidden>Save certificate (.png)</button><span class="meter" id="certMsg"></span></div>
+  </div>
+</section>
+
+<!-- ============ TEMPLATE KIT ============ -->
+<section class="lesson" data-id="kit" data-num="T" data-lib="1" data-title="Template kit" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Library</span>
+    <h2>Template kit</h2>
+    <p class="lede">Memos, agreements, policies, letters, and board forms for any Guide Right foundation or affiliated 501(c)(3). Replace every bracket with your own information. Agreements and policies should be reviewed by counsel before use.</p>
+  </div>
+  <div class="row" style="margin-bottom:12px">
+    <button class="btn" id="kitDownload" hidden>Download the full kit (.md)</button>
+    <span class="meter" id="kitMsg"></span>
+  </div>
+  <nav class="kit-nav" id="kitNav" aria-label="Template groups"></nav>
+  <div id="kitList"></div>
+</section>
+
+<!-- ============ SAMPLE PROPOSAL ============ -->
+<section class="lesson" data-id="sample" data-num="S" data-lib="1" data-title="Sample proposal" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Library</span>
+    <h2>Sample proposal</h2>
+    <p class="lede">A complete proposal showing every module's piece in place. The organization, chapter, county, funder, and all figures are fictional.</p>
+  </div>
+  <div class="callout note"><b>Fictional example</b>Riverbend Guide Right Foundation, Inc. is a fictional affiliated 501(c)(3) of the fictional Riverbend Alumni Chapter. Use the structure. Never reuse the numbers.</div>
+
+  <article class="proposal">
+    <header class="prop-head">
+      <span class="eyebrow">Application to the Riverbend Community Foundation · Youth Opportunity Fund</span>
+      <h3 style="margin-top:6px">Kappa League College Pathway Year</h3>
+      <dl class="prop-meta">
+        <div><dt>Applicant</dt><dd>Riverbend Guide Right Foundation, Inc., a 501(c)(3) organization (EIN on file)</dd></div>
+        <div><dt>Program partner</dt><dd>Riverbend Alumni Chapter, Kappa Alpha Psi Fraternity, Inc.</dd></div>
+        <div><dt>Request</dt><dd class="tabnum">$20,960 for August 1, 2027 to July 31, 2028</dd></div>
+        <div><dt>Authorized by</dt><dd>Board Resolution No. 27-04</dd></div>
+      </dl>
+    </header>
+
+    <h4>Executive summary</h4>
+    <p>Riverbend Guide Right Foundation requests $20,960 to run a full college pathway year for 24 young men in grades 9 through 12 through Kappa League. Trained mentors who are college graduates will lead monthly sessions, three FAFSA and application nights, two college tours, and summer leadership camp. For the Class of 2026, 15 of 18 program graduates enrolled in college the following fall, confirmed by enrollment records. This grant will help raise FAFSA completion to at least 90 percent of seniors and fall college enrollment to at least 80 percent of graduates.</p>
+
+    <h4>Organization background</h4>
+    <p>The Foundation is a 501(c)(3) organization that funds and administers the Guide Right program of the Riverbend Alumni Chapter. The Chapter has operated Kappa League since 2009. The Foundation holds all program funds, awards scholarships under board-adopted procedures, and reports to funders. Chapter members deliver the program under a memorandum of understanding renewed each August. Twenty mentors completed youth protection training and background checks this year.</p>
+
+    <h4>Statement of need</h4>
+    <p>In Riverbend County, 21 percent of adults age 25 and older hold a bachelor's degree, compared with 33 percent statewide (fictional county data). At the two high schools we serve, 58 percent of the Class of 2025 enrolled in college the following fall (fictional state report card). Counselors at both schools each serve over 400 students, leaving little time for one to one college guidance. Kappa League fills that gap with mentors who have completed college and can walk each student through applications and financial aid.</p>
+
+    <h4>Results to date</h4>
+    <p>For the Class of 2026, the Foundation awarded $18,000 in scholarships to 12 of 18 Kappa League seniors. With mentor support on applications, those students secured $142,000 in additional scholarships and grants, documented by award letters. Sixteen of 18 seniors completed the FAFSA. Fifteen of 18 graduates (83 percent) enrolled in college the following fall, confirmed by National Student Clearinghouse records, compared with 58 percent for their schools. Because students choose to join Kappa League, we describe these results as associated with participation.</p>
+
+    <h4>Objectives</h4>
+    <ol>
+      <li>By March 31, 2028, at least 90 percent of Kappa League seniors will complete the FAFSA, confirmed by submission records.</li>
+      <li>By May 31, 2028, at least 85 percent of seniors will submit three or more college applications, confirmed by the senior tracker.</li>
+      <li>At least 75 percent of enrolled Leaguers will meet the active participant definition (60 percent attendance) for the year.</li>
+      <li>At least 80 percent of 2028 graduates will enroll in college the following fall, confirmed by an enrollment records match reported in January 2029.</li>
+    </ol>
+
+    <h4>Logic model</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Inputs</th><th>Activities</th><th>Outputs</th><th>Short term outcomes</th><th>Long term outcomes</th></tr></thead>
+      <tbody><tr><td>20 trained mentors; Kappa League curriculum; coordinator; school partners</td><td>10 monthly sessions; 3 FAFSA and application nights; 2 college tours; summer camp</td><td>Sessions held; attendance; mentor hours; FAFSAs and applications submitted</td><td>FAFSA completion; applications; scholarships and aid secured</td><td>Fall enrollment; second year persistence; degree completion</td></tr></tbody>
+    </table></div>
+
+    <h4>Evaluation plan</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Objective</th><th>Indicator</th><th>Tool</th><th>When</th><th>Who</th></tr></thead>
+      <tbody>
+        <tr><td>1 FAFSA</td><td>Seniors with confirmed submission ÷ seniors</td><td>Senior tracker and confirmations</td><td>Monthly, Oct to Mar</td><td>Scholarship chair</td></tr>
+        <tr><td>2 Applications</td><td>Seniors with 3+ applications ÷ seniors</td><td>Senior tracker</td><td>Monthly, Oct to May</td><td>Program Director</td></tr>
+        <tr><td>3 Participation</td><td>Active Leaguers ÷ enrolled</td><td>Attendance log</td><td>Each session; quarterly summary</td><td>Kappa League Director</td></tr>
+        <tr><td>4 Enrollment</td><td>Graduates enrolled ÷ graduates</td><td>Enrollment records match</td><td>January after graduation</td><td>Data lead</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Budget</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Line</th><th>Calculation</th><th style="text-align:right">Amount</th></tr></thead>
+      <tbody class="tabnum">
+        <tr><td>Program coordinator stipend</td><td>10 months × $600</td><td style="text-align:right">$6,000</td></tr>
+        <tr><td>Curriculum and materials</td><td>24 participants × $100</td><td style="text-align:right">$2,400</td></tr>
+        <tr><td>FAFSA and application nights</td><td>3 events × $300</td><td style="text-align:right">$900</td></tr>
+        <tr><td>Mentor background checks and training</td><td>20 mentors × $70</td><td style="text-align:right">$1,400</td></tr>
+        <tr><td>Enrollment verification service</td><td>Vendor quote (fictional)</td><td style="text-align:right">$900</td></tr>
+        <tr><td>College tours (participant support)</td><td>2 tours × 26 travelers × $100</td><td style="text-align:right">$5,200</td></tr>
+        <tr><td>Summer camp fees (participant support)</td><td>12 students × $250</td><td style="text-align:right">$3,000</td></tr>
+        <tr><td><b>Total direct costs</b></td><td></td><td style="text-align:right"><b>$19,800</b></td></tr>
+        <tr><td>Indirect costs</td><td>10% of $11,600 modified total direct costs</td><td style="text-align:right">$1,160</td></tr>
+        <tr><td><b>Total request</b></td><td></td><td style="text-align:right"><b>$20,960</b></td></tr>
+      </tbody>
+    </table></div>
+    <p>Not requested: the Foundation's scholarship fund ($15,000 from member and community gifts) and 640 volunteer mentor hours. The full budget narrative appears in the Template Kit.</p>
+
+    <h4>Sustainability</h4>
+    <p>The Foundation funds core sessions each year from member and community gifts. This grant adds the coordinator, enrollment verification, and expanded travel. Two school partners provide meeting space at no cost. The Foundation will seek renewal from this fund and apply to two corporate partners for college tour support in 2028.</p>
+
+    <h4>Attachments</h4>
+    <p>IRS determination letter; board resolution; current board roster; most recent Form 990; financial statements; data profile; letters of support from both high schools; youth protection policy.</p>
+  </article>
+</section>
+
+<!-- ============ FACILITATOR GUIDE ============ -->
+<section class="lesson" data-id="fac" data-num="F" data-lib="1" data-title="Facilitator guide" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Library</span>
+    <h2>Facilitator guide</h2>
+    <p class="lede">Run this course as a six week cohort for one organization, a group of chapters, or a province. Learners work through modules on their own and meet once a week to share labs and build their packets.</p>
+  </div>
+
+  <h3 style="margin-top:0">Six week plan</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Week</th><th>Modules before the session</th><th>Session focus</th><th>Bring</th></tr></thead>
+    <tbody>
+      <tr><td class="tabnum">1</td><td>00 to 02</td><td>Readiness check and chapter and 501(c)(3) roles</td><td>Document library checklist; MOU status</td></tr>
+      <tr><td class="tabnum">2</td><td>03 to 04</td><td>Prospects and data systems</td><td>Five prospects with fit ratings; draft data dictionary</td></tr>
+      <tr><td class="tabnum">3</td><td>05 to 07</td><td>Scholarship evidence and compliance</td><td>Scholarship Evidence Lab output; selection procedures draft</td></tr>
+      <tr><td class="tabnum">4</td><td>08 to 09</td><td>Need statement and logic model</td><td>Draft need statement; objectives</td></tr>
+      <tr><td class="tabnum">5</td><td>10 to 11</td><td>Narrative and budget peer review</td><td>Draft narrative; Budget Lab output</td></tr>
+      <tr><td class="tabnum">6</td><td>12 to 14</td><td>Evaluation, board practice, and packet showcase</td><td>Completed Grant Ready Packet</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Session agenda (90 minutes)</h3>
+  <ol class="steps">
+    <li><span><strong>Open, 10 minutes.</strong> Wins since last week and questions from the modules.</span></li>
+    <li><span><strong>Teach back, 20 minutes.</strong> Two learners explain one key idea each, in their own words.</span></li>
+    <li><span><strong>Lab work, 35 minutes.</strong> Pairs complete or improve the week's packet piece using their own data.</span></li>
+    <li><span><strong>Peer review, 20 minutes.</strong> Pairs trade drafts and apply the Module 13 rubric to the relevant criterion.</span></li>
+    <li><span><strong>Assign, 5 minutes.</strong> Modules and packet pieces due next week.</span></li>
+  </ol>
+
+  <h3>Board practice session</h3>
+  <div class="prose"><p>For board members, run one 75 minute session after week 4: sign reviewer statements (Template Kit), score the Review Lab proposal independently, then hold a calibration discussion on any criterion where scores differ by two or more points. Close by adopting or adjusting the rubric weights for your board.</p></div>
+
+  <h3>Facilitator preparation</h3>
+  <div class="prose"><ul>
+    <li>Share the course link with every learner and confirm each can open it while signed in.</li>
+    <li>Ask each organization to bring real records. Labs work best with the organization's own numbers.</li>
+    <li>Remind learners never to bring student names into shared sessions. Group totals only.</li>
+    <li>Collect each team's capstone checklist in week 6.</li>
+  </ul></div>
+
+  <h3>Completion</h3>
+  <div class="prose"><p>A learner completes the course by passing the final assessment in Module 14 with 8 or more correct. The certificate appears there and can be saved as an image.</p></div>
+
+  <div id="adminPanel" hidden>
+    <h3>Learner completions</h3>
+    <p class="prose">Visible only to people who can edit this course. Each learner's progress appears here once they open the course while signed in.</p>
+    <div class="row" style="margin-bottom:10px"><button class="btn ghost" id="adminCsv">Download completions (.csv)</button><span class="meter" id="adminMsg"></span></div>
+    <div class="tblwrap"><table id="adminTable"><thead><tr><th>Learner</th><th>Organization</th><th>Modules complete</th><th>Final score</th><th>Passed</th></tr></thead><tbody></tbody></table></div>
+  </div>
+</section>
+
+<!-- ============ RESOURCES ============ -->
+<section class="lesson" data-id="res" data-num="G" data-lib="1" data-title="Glossary and sources" hidden>
+  <div class="lesson-head">
+    <span class="eyebrow">Library</span>
+    <h2>Glossary and sources</h2>
+  </div>
+
+  <h3 style="margin-top:0">Glossary</h3>
+  <div class="tblwrap"><table><tbody>
+    <tr><td><b>Denominator</b></td><td>The group a rate is calculated from. "15 of 18" names it; "83 percent" alone hides it.</td></tr>
+    <tr><td><b>Affiliated 501(c)(3)</b></td><td>A tax exempt organization or foundation connected to a chapter but legally separate from it, with its own EIN, board, and IRS determination letter.</td></tr>
+    <tr><td><b>Fiscal sponsor</b></td><td>A nonprofit that receives and manages grant funds on behalf of a program without its own tax exempt status.</td></tr>
+    <tr><td><b>LOI</b></td><td>Letter of inquiry. A short request some funders require before inviting a full proposal.</td></tr>
+    <tr><td><b>NOFO</b></td><td>Notice of funding opportunity. The federal document that sets eligibility, priorities, and scoring.</td></tr>
+    <tr><td><b>Persistence</b></td><td>A student continuing college enrollment from one year to the next.</td></tr>
+    <tr><td><b>Restricted funds</b></td><td>Grant dollars that may be spent only for the purposes the funder approved.</td></tr>
+    <tr><td><b>Selection effect</b></td><td>When results reflect who chose to join a program rather than what the program did.</td></tr>
+    <tr><td><b>UEI</b></td><td>Unique Entity ID issued through SAM.gov registration, required for federal awards.</td></tr>
+  </tbody></table></div>
+
+  <h3>Sources</h3>
+  <div class="prose"><ul>
+    <li><a href="https://www.ecfr.gov/current/title-2/subtitle-A/chapter-II/part-200" target="_blank" rel="noopener">2 CFR Part 200, Uniform Guidance (eCFR)</a></li>
+    <li><a href="https://www.pkfod.com/insights/update-on-ombs-major-revisions-to-uniform-guidance/" target="_blank" rel="noopener">PKF O'Connor Davies: summary of the 2024 Uniform Guidance thresholds</a></li>
+    <li><a href="https://www.nonprofitaccountingbasics.org/node/1279" target="_blank" rel="noopener">Nonprofit Accounting Basics: 2024 revisions and MTDC changes</a></li>
+    <li><a href="https://www.whitehouse.gov/presidential-actions/2025/08/improving-oversight-of-federal-grantmaking/" target="_blank" rel="noopener">Executive Order 14332, Improving Oversight of Federal Grantmaking</a></li>
+    <li><a href="https://www.cooley.com/news/insight/2025/2025-09-04-new-executive-order-increases-oversight-of-award-and-performance-of-federal-grants" target="_blank" rel="noopener">Cooley: analysis of EO 14332</a></li>
+    <li><a href="https://www.studentclearinghouse.org/studenttracker" target="_blank" rel="noopener">National Student Clearinghouse: StudentTracker</a></li>
+    <li><a href="https://www.afslaw.com/perspectives/alerts/nonprofits-diversity-scholarship-program-challenged-federal-court" target="_blank" rel="noopener">ArentFox Schiff: nonprofit diversity scholarship program challenged in federal court (2025)</a></li>
+    <li><a href="https://jbhe.com/2026/04/congressional-black-caucus-sued-for-limiting-scholarship-program-to-black-students/" target="_blank" rel="noopener">Journal of Blacks in Higher Education: suit against the CBC Foundation scholarship (2026)</a></li>
+    <li><a href="https://www.irs.gov/charities-non-profits/private-foundations/grants-to-individuals" target="_blank" rel="noopener">IRS: private foundation grants to individuals</a></li>
+    <li><a href="https://www.irs.gov/publications/p970" target="_blank" rel="noopener">IRS Publication 970: tax benefits for education (scholarships)</a></li>
+    <li><a href="https://archives.joe.org/joe/2020february/tt3.php" target="_blank" rel="noopener">Journal of Extension: tracking college enrollment for precollege program alumni</a></li>
+    <li><a href="https://sam.gov" target="_blank" rel="noopener">SAM.gov</a> · <a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a> · <a href="https://data.census.gov" target="_blank" rel="noopener">data.census.gov</a> · <a href="https://nces.ed.gov" target="_blank" rel="noopener">NCES</a> · <a href="https://candid.org" target="_blank" rel="noopener">Candid</a></li>
+  </ul></div>
+</section>
+
+<div class="pager">
+  <button class="btn ghost" id="prevBtn">Previous</button>
+  <button class="btn" id="nextBtn">Next module</button>
+</div>
+</main>
+</div>
+
+<script>
+const KIT = [
+{g:"Chapter and affiliated 501(c)(3)", id:"mou", t:"Memorandum of understanding: chapter and affiliated 501(c)(3)", n:"Review with counsel before signing. Renew each program year.", x:
+`MEMORANDUM OF UNDERSTANDING
+
+Between the [Chapter Name] Chapter of Kappa Alpha Psi Fraternity, Inc. ("the Chapter")
+and [Organization Name], a 501(c)(3) organization, EIN [00-0000000] ("the Organization")
+
+Effective date: [date]
+Term: One program year, renewing each [August 1] unless ended in writing.
+
+1. PURPOSE
+This memorandum describes how the Chapter and the Organization work together to deliver the Guide Right and Kappa League program ("the Program"), and how charitable funds for the Program are raised, held, spent, and reported. The Chapter and the Organization are separate entities. Nothing in this memorandum makes either party the agent, partner, or guarantor of the other.
+
+2. RESPONSIBILITIES OF THE ORGANIZATION
+a. Applies for, receives, and holds all grants and charitable gifts for the Program in its own name and accounts.
+b. Approves each grant application and Program budget through its board, and signs through its authorized officer.
+c. Pays Program expenses directly, or reimburses documented, preapproved expenses under its reimbursement policy.
+d. Keeps the books, files its IRS Form 990, and submits all funder reports.
+e. Administers scholarships under its written selection procedures.
+f. Maintains the insurance and youth protection policies required by funders and by the Fraternity.
+
+3. RESPONSIBILITIES OF THE CHAPTER
+a. Recruits, screens, and trains mentors under the Program's youth protection policy.
+b. Delivers Program activities as described in approved proposals.
+c. Collects participation and outcome data under the Program's data dictionary and consent forms, and delivers it to the Organization by the dates in Attachment A.
+d. Submits expense documentation within [30] days of each expense.
+e. Does not solicit or accept grants in the Chapter's name for the Program, and does not deposit Program funds into Chapter accounts.
+
+4. FUNDS
+All Program grants and gifts belong to the Organization and are used only for charitable Program purposes and any restrictions set by the funder. Program funds will not pay membership dues, Chapter social events, regalia, or any expense that mainly benefits members.
+
+5. NAMES AND MARKS
+Use of the Fraternity's name, marks, and program names follows the policies of Kappa Alpha Psi Fraternity, Inc. [Insert the approval process confirmed with International Headquarters.]
+
+6. DATA AND PRIVACY
+Student records are kept in [system], available only to named Program leaders, and reported only as group totals. Each party protects student information under the consent forms on file.
+
+7. POINTS OF CONTACT
+Organization: [Name, title, email, phone]
+Chapter: [Guide Right Director, email, phone]
+
+8. REVIEW AND ENDING
+The parties review this memorandum each [August]. Either party may end it with [60] days' written notice. Funds held for active grants remain with the Organization and are used as each funder requires.
+
+SIGNATURES
+For the Organization: ______________________  [Name, Title]  Date: ________
+For the Chapter: ______________________  [Name], Polemarch  Date: ________
+
+Attachment A: Program calendar and data delivery dates
+Attachment B: Approved Program budget`},
+
+{g:"Chapter and affiliated 501(c)(3)", id:"fiscal", t:"Fiscal sponsorship agreement outline", n:"For a chapter program without an affiliated 501(c)(3). The sponsor's counsel usually supplies the final agreement.", x:
+`FISCAL SPONSORSHIP AGREEMENT: OUTLINE
+
+Parties: [Sponsor Name], a 501(c)(3) organization ("the Sponsor"), and the [Chapter Name] Chapter Guide Right program ("the Program").
+
+1. Purpose: the Sponsor receives and administers charitable funds for the Program's charitable activities.
+2. Control of funds: the Sponsor holds all funds in its accounts and has final authority over their use, consistent with its exempt purposes.
+3. Applications: the Sponsor approves and signs every grant application made for the Program.
+4. Spending: how expenses are approved, paid, or reimbursed; required documentation.
+5. Fee: the Sponsor's administrative fee of [percent] of funds received.
+6. Reporting: Program delivers activity and data reports by [dates]; the Sponsor reports to funders.
+7. Insurance and youth protection: coverage and policies required.
+8. Names and marks: how the Sponsor and the Fraternity are named in materials.
+9. Term and ending: notice period; what happens to unspent restricted funds.
+10. Signatures.`},
+
+{g:"Chapter and affiliated 501(c)(3)", id:"resolution", t:"Board resolution authorizing a grant application", n:"Adopt before submission. Keep the signed copy in the document library.", x:
+`RESOLUTION OF THE BOARD OF DIRECTORS OF [ORGANIZATION NAME]
+
+Resolution No. [ ]
+Date adopted: [date]
+
+WHEREAS [Organization Name] supports the Guide Right and Kappa League program of the [Chapter Name] Chapter; and
+
+WHEREAS [Funder Name] has issued [name of funding opportunity] with a deadline of [date];
+
+RESOLVED, that the Board authorizes submission of an application to [Funder Name] requesting $[amount] for [project name] for the period [start date] through [end date], using the budget presented to the Board on [date];
+
+RESOLVED FURTHER, that [Name, Title] is authorized to sign and submit the application and, if an award is made, to sign the grant agreement, subject to Board review of any terms that differ materially from the application;
+
+RESOLVED FURTHER, that any required match of $[amount] is committed from [source].
+
+Vote: [ ] for, [ ] against, [ ] abstaining.
+Recusals: [names, or "none"].
+
+Certified by: ______________________  [Name], Secretary  Date: ________`},
+
+{g:"Chapter and affiliated 501(c)(3)", id:"approvalmemo", t:"Grant application approval memo", n:"From the program lead to the organization's board, sent with the draft application.", x:
+`MEMORANDUM
+
+To: Board of Directors, [Organization Name]
+From: [Name], Guide Right Director, [Chapter Name] Chapter
+CC: [Treasurer], [Polemarch]
+Date: [date]
+Subject: Request for approval to submit a [Funder Name] application
+
+REQUEST
+Approval to submit a $[amount] application to [Funder Name] for [project name], due [date].
+
+FIT
+[Two sentences: the funder's stated priority and how the program matches it.]
+
+WHAT THE GRANT PAYS FOR
+[Short list of the main budget lines and amounts.]
+
+COMMITMENTS IF AWARDED
+Reporting: [schedule]
+Match: [amount and source, or none]
+Volunteer time: [estimate]
+
+DATA CITED
+All figures come from the [program year] data profile. Data lead: [name]. Checked against records on [date].
+
+RISKS
+[Deadline, capacity, or restrictions the board should weigh.]
+
+ATTACHMENTS
+Draft narrative; budget and budget narrative; data profile; letters of support.
+
+DECISION NEEDED BY
+[date]`},
+
+{g:"Scholarships", id:"schproc", t:"Scholarship selection procedures", n:"Have counsel review eligibility criteria before each cycle. A private foundation may need IRS advance approval under section 4945(g).", x:
+`[ORGANIZATION NAME] SCHOLARSHIP SELECTION PROCEDURES
+Adopted by the Board of Directors on [date]
+Eligibility criteria last reviewed by counsel on [date]
+
+1. PURPOSE
+To support the postsecondary education of [eligible group] in [service area].
+
+2. ELIGIBILITY
+[List each criterion exactly as it will be applied.]
+
+3. NOTICE
+Criteria, application, and deadline are published [where] at least [six] weeks before the deadline.
+
+4. APPLICATION MATERIALS
+[Application form], [transcript], [essay prompt], [recommendation].
+
+5. SELECTION COMMITTEE
+At least [three] members appointed by the Board. Each member signs the conflict of interest and confidentiality statement every cycle. A member does not review any applicant who is a relative or with whom the member has a personal or financial relationship.
+
+6. INSIDER EXCLUSION
+Relatives of the Organization's directors, officers, and selection committee members are not eligible. [Confirm with tax adviser.]
+
+7. SCORING
+Members score each application independently with the attached rubric. Scores and comments are recorded and kept.
+
+8. AWARDS
+Award amounts follow the Board-approved budget. Payment goes directly to the college for the student's account after enrollment is confirmed.
+
+9. RENEWAL
+[Conditions for renewal, if any.]
+
+10. RECORDS
+Notices, applications, scores, minutes, award letters, payment records, and enrollment confirmations are kept under the Organization's records retention policy.
+
+11. ANNUAL REVIEW
+The Board reviews these procedures each year before the cycle opens.`},
+
+{g:"Scholarships", id:"schcoi", t:"Selection committee conflict of interest and confidentiality statement", n:"Signed by every committee member each cycle.", x:
+`SELECTION COMMITTEE STATEMENT
+[Organization Name] Scholarship, [year] cycle
+
+I agree that:
+1. I will score applications only on the published criteria and rubric.
+2. I will disclose and recuse from any applicant who is my relative or with whom I have a personal, professional, or financial relationship.
+3. I will keep all application materials and committee discussions confidential, and I will not keep copies after the cycle.
+4. I will not discuss an application with the applicant or the applicant's family during the cycle.
+
+Applicants I must recuse from: ______________________ (or "none")
+
+Name: ______________________  Signature: ______________________  Date: ________`},
+
+{g:"Scholarships", id:"schaward", t:"Scholarship award letter to the student", n:"Send after the board approves awards.", x:
+`[Organization letterhead]
+
+[Date]
+
+Dear [Student Name],
+
+On behalf of [Organization Name], congratulations. You have been selected to receive the [Scholarship Name] in the amount of $[amount] for the [year] academic year.
+
+How payment works: we pay the award directly to your college for your student account. Please send us, by [date]:
+1. Your college's name and student ID number.
+2. Confirmation of your enrollment for the [term] term.
+3. The financial aid office contact who will receive the payment.
+
+Tax note: scholarship amounts used for tuition, required fees, books, supplies, and equipment are generally not taxable. Amounts used for room, board, or travel may be taxable. Please talk with a tax adviser about your situation.
+
+We would be glad to hear from you after your first term. With your permission, we may share your news with supporters of the program.
+
+Sincerely,
+[Name], [Title]
+[Organization Name]`},
+
+{g:"Scholarships", id:"schpay", t:"Scholarship payment letter to the college", n:"Send with the payment.", x:
+`[Organization letterhead]
+
+[Date]
+
+[College Name]
+Office of Financial Aid / Bursar
+[Address]
+
+Re: Scholarship payment for [Student Name], Student ID [number]
+
+Enclosed is payment of $[amount] from [Organization Name] for the [Scholarship Name], to be credited to the student's account for the [term and year] term.
+
+If the student is not enrolled, or if any portion cannot be applied, please return the unused amount to [Organization Name] at the address above rather than refunding it to the student.
+
+Please confirm receipt to [email].
+
+Sincerely,
+[Name], Treasurer
+[Organization Name], EIN [00-0000000]`},
+
+{g:"Data and privacy", id:"profile", t:"One page data profile", n:"Close each program year on the same date. Use the shared definitions in Module 07.", x:
+`[ORGANIZATION NAME] GUIDE RIGHT DATA PROFILE
+Program year: [year to year]   Count date: [date]   Prepared by: [name]   Attested by: [authorized officer]
+
+PARTICIPATION                                   This year   Last year   Two years ago
+Kappa Leaguers enrolled                         [ ]         [ ]         [ ]
+Active Leaguers (meeting attendance threshold)   [ ] of [ ]  [ ] of [ ]  [ ] of [ ]
+Sessions held                                   [ ]         [ ]         [ ]
+Active mentors                                  [ ]         [ ]         [ ]
+Mentors with current youth protection training  [ ] of [ ]  [ ] of [ ]  [ ] of [ ]
+Mentor hours                                    [ ]         [ ]         [ ]
+
+COLLEGE READINESS
+Seniors with confirmed FAFSA                    [ ] of [ ]  [ ] of [ ]  [ ] of [ ]
+Seniors graduating                              [ ] of [ ]  [ ] of [ ]  [ ] of [ ]
+
+SCHOLARSHIPS
+Recipients                                      [ ]         [ ]         [ ]
+Dollars awarded                                 $[ ]        $[ ]        $[ ]
+Outside aid secured (award letters on file)     $[ ]        $[ ]        $[ ]
+
+COLLEGE OUTCOMES
+Fall enrollment after graduation                [ ] of [ ]  [ ] of [ ]  [ ] of [ ]
+   Verification method                          [Clearinghouse / documents / self report]
+Second year persistence                         [ ] of [ ]  [ ] of [ ]  [ ] of [ ]
+
+COMPARISON
+[Benchmark rate, comparison group, source, year]
+
+NOTES
+Groups under [10] students are reported as counts only.`},
+
+{g:"Data and privacy", id:"consent", t:"Data use and media consent", n:"Adapt with counsel. Keep a signed copy for every participant.", x:
+`DATA USE CONSENT
+
+I give permission for the [Organization Name] Guide Right program to collect my student's attendance, program participation, scholarship, and college enrollment information, including information obtained after high school graduation through enrollment verification services. This information will be stored securely, shared only with program leaders, and reported to funders only as group totals that do not identify my student. I may withdraw this permission in writing at any time.
+
+Student name: ______________________
+Parent or guardian: ______________________  Signature: ______________________  Date: ________
+
+MEDIA AND STORY RELEASE (separate permission)
+[ ] I give permission to use my student's name, photo, and story in program materials and grant applications.
+
+Parent or guardian signature: ______________________  Date: ________`},
+
+{g:"Data and privacy", id:"schoolreq", t:"Request to a school for data sharing", n:"Schools release student records only with written consent or a formal agreement.", x:
+`[Organization letterhead]
+
+[Date]
+
+[Principal or District Contact]
+[School or District]
+
+Re: Request for program participant outcome information
+
+Dear [Name],
+
+[Organization Name] operates the Guide Right and Kappa League mentoring program with the [Chapter Name] Chapter, serving [number] students from [school]. To improve the program and report results to funders, we request the following information for program participants only, as group totals:
+1. Graduation status for program seniors.
+2. FAFSA completion status for program seniors.
+3. [Other item]
+
+We hold signed parent or guardian consent for each participant, and we will report results only as group totals. We are glad to sign a data sharing agreement in the district's format.
+
+Contact: [name, title, email, phone]
+
+Sincerely,
+[Name], [Title]`},
+
+{g:"Writing the application", id:"needtpl", t:"Need statement", n:"Every number carries its source, year, and geography.", x:
+`In [county or city], [percent] of adults age 25 and older hold a bachelor's degree, compared with [percent] statewide ([source], [year]). At [schools served], [percent] of graduates enrolled in college the following fall ([state report card], [year]). Students in these schools report limited access to [barrier], and [local evidence of barrier].
+
+[Organization Name], with the [Chapter Name] Chapter, serves [number] young men in grades [range] through Kappa League, pairing them with [number] trained mentors who are college graduates. [One sentence of your own outcome data.] This proposal will [what the grant makes possible] so that [outcome for students].`},
+
+{g:"Writing the application", id:"schpar", t:"Scholarship evidence paragraph", n:"Use the Scholarship Evidence Lab in Module 05 to fill it.", x:
+`For the [class year], [Organization Name] awarded $[amount] in scholarships to [recipients] of [seniors] Kappa League seniors. With mentor support on applications, these students secured $[outside aid] in additional scholarships and grants, documented by award letters. [Enrolled] of [graduates] graduates ([rate] percent) enrolled in college the following fall, confirmed by [verification method], compared with [benchmark rate] for [comparison group] ([source], [year]).`},
+
+{g:"Writing the application", id:"smart", t:"SMART objective", n:"", x:
+`By [date], [target number or percent] of [participant group] will [measurable change], as measured by [data source], reported by [role].`},
+
+{g:"Writing the application", id:"loi", t:"Letter of inquiry outline", n:"", x:
+`1. Opening: amount requested, program name, and the funder priority it serves.
+2. Need: two sourced sentences.
+3. Program: what happens, for whom, and how often.
+4. Evidence: one paragraph of verified results.
+5. Organization: the affiliated 501(c)(3), the chapter's role, and partners.
+6. Close: contact person and a request for a conversation.`},
+
+{g:"Writing the application", id:"supreq", t:"Letter of support: request and sample", n:"Ask at least four weeks before the deadline. Offer the partner a draft.", x:
+`REQUEST
+
+Dear [Partner Name],
+
+[Organization Name] is applying to [Funder Name] for $[amount] to [project purpose], due [date]. Your partnership on [specific activity] is central to the plan. Would you provide a letter of support on your letterhead by [date]? A draft is attached for you to edit freely.
+
+Thank you,
+[Name, Title, contact]
+
+SAMPLE LETTER
+
+[Partner letterhead]
+[Date]
+
+[Funder Name]
+[Address]
+
+Re: Support for [Organization Name]'s [project name]
+
+[Partner Name] supports [Organization Name]'s application. Since [year], our [school or office] has worked with the Guide Right program on [specific activity]. During the grant period we will [specific commitment, such as meeting space, counselor time, or access to FAFSA nights]. [One sentence on the value to students.]
+
+Sincerely,
+[Name, Title]`},
+
+{g:"Writing the application", id:"budline", t:"Budget line justification", n:"", x:
+`[Line item]: [quantity] x [unit] x $[unit cost] = $[total]. Supports [activity] toward Objective [number]. Basis for cost: [quote, prior year actual, or published rate].`},
+
+{g:"Writing the application", id:"budnarr", t:"Budget narrative example", n:"Fictional figures. Replace with your own.", x:
+`PERSONNEL
+Program coordinator stipend: 10 months x $600 = $6,000. A part time coordinator schedules sessions, tracks attendance, and prepares data reports (Objectives 1 to 3).
+
+SUPPLIES
+Curriculum and materials: 24 participants x $100 = $2,400. Workbooks, college guides, and session supplies.
+FAFSA and application nights: 3 events x $300 = $900. Materials and light meals for students and families.
+
+CONTRACTUAL
+Mentor background checks and training: 20 mentors x $70 = $1,400. Required by the youth protection policy.
+Enrollment verification service: vendor quote = $900. Confirms college enrollment for the graduating cohort (Objective 4).
+
+PARTICIPANT SUPPORT
+College tours: 2 tours x 26 travelers x $100 = $5,200. Charter bus and meals.
+Summer leadership camp fees: 12 students x $250 = $3,000.
+
+INDIRECT
+10 percent of modified total direct costs ($11,600) = $1,160. Covers accounting, insurance, and administration. Participant support is excluded from the base.
+
+TOTAL REQUEST: $20,960
+
+IN KIND (not requested)
+640 volunteer mentor hours valued at [published rate, source, year].`},
+
+{g:"Grant board", id:"intake", t:"Proposal intake form", n:"For requests made to your organization's own funds.", x:
+`[ORGANIZATION NAME] PROPOSAL INTAKE FORM
+
+Applicant program or partner: ______________________
+Contact name, email, phone: ______________________
+Program lead's relationship to the organization: ______________________
+Amount requested: $________   Grant period: ________ to ________
+
+1. Summary (100 words): what you will do, for whom, and what will change.
+2. Need, with sources.
+3. Objectives (two to four, SMART).
+4. Activities and timeline.
+5. Evaluation: indicator, tool, timing, and owner for each objective.
+6. Budget with calculations for every line.
+7. Data profile for the most recent program year.
+8. Youth protection practice for anyone working with students.
+9. Other funding requested or secured for this work.
+
+Required attachments: [ ] Budget  [ ] Data profile  [ ] Letters of support (if any)
+
+Intake screen (board use)
+[ ] Eligible  [ ] Complete  [ ] Gaps sent on ________, due ________
+Screened by: ________  Date: ________`},
+
+{g:"Grant board", id:"revcoi", t:"Reviewer conflict of interest and confidentiality statement", n:"Signed before reviewers see any proposal.", x:
+`REVIEWER STATEMENT
+[Organization Name] Grant Board, [cycle]
+
+I agree that:
+1. I will score proposals only on the adopted rubric and what each proposal shows.
+2. I will recuse from any proposal I helped write, any proposal I lead or would be paid from, and any proposal in which a relative or business partner has a role or would benefit.
+3. I will keep proposals, scores, and discussions confidential.
+4. I will not contact applicants about their proposals during the review.
+
+Proposals I must recuse from: ______________________ (or "none")
+
+Name: ______________________  Signature: ______________________  Date: ________`},
+
+{g:"Grant board", id:"scoresheet", t:"Reviewer scoring sheet", n:"Scores of 1 to 5. Weighted score = score / 5 x weight.", x:
+`REVIEWER SCORING SHEET
+Proposal: ______________________  Reviewer: ______________________  Date: ________
+Conflict check: [ ] No conflict  [ ] Recused (stop here)
+
+Criterion                      Weight  Score (1-5)  Weighted  Evidence for this score
+Need and alignment               20     [ ]          [ ]       ______________________
+Program design                   20     [ ]          [ ]       ______________________
+Data and evidence                25     [ ]          [ ]       ______________________
+Evaluation plan                  15     [ ]          [ ]       ______________________
+Budget                           10     [ ]          [ ]       ______________________
+Capacity and sustainability      10     [ ]          [ ]       ______________________
+TOTAL                           100                  [ ]
+
+Recommendation: [ ] Fund  [ ] Fund with conditions  [ ] Decline with feedback
+Conditions or coaching suggested: ______________________`},
+
+{g:"Grant board", id:"decision", t:"Board decision memo", n:"Approved by the board and kept with the minutes.", x:
+`MEMORANDUM
+
+To: Board of Directors, [Organization Name]
+From: [Name], Grant Board Chair
+Date: [date]
+Subject: Grant decisions, [cycle]
+
+SUMMARY
+Proposals received: [ ]. Eligible and complete: [ ]. Funds available: $[ ]. Recommended: $[ ].
+
+DECISIONS
+Proposal              Request    Average score   Decision                 Award     Conditions
+[Name]                $[ ]       [ ] / 100       [Fund / Conditions / Decline]  $[ ]   [ ]
+
+CALIBRATION
+Criteria discussed because scores differed by two or more points: [list]. Score changes and reasons: [list].
+
+RECUSALS
+[Reviewer]: [proposal], reason: [ ].
+
+FOLLOW UP
+Award and decline letters sent by [date]. Grant agreements signed by [date]. Midyear reports due [date].
+
+Approved by board vote on [date]: [ ] for, [ ] against, [ ] abstaining.`},
+
+{g:"Grant board", id:"awardletter", t:"Award letter", n:"", x:
+`[Organization letterhead]
+
+[Date]
+
+Dear [Name],
+
+The [Organization Name] Grant Board has approved an award of $[amount] for [project name] for the period [start] to [end].
+
+Conditions: [list, or "none"].
+
+Next steps:
+1. Sign and return the enclosed grant agreement by [date].
+2. Funds will be [paid / available for reimbursement] after the signed agreement is received.
+3. Midyear progress report due [date]. Final report due [date].
+
+Reviewer comments are enclosed to support your work. Contact [name, email] with questions.
+
+Congratulations,
+[Name], Grant Board Chair`},
+
+{g:"Grant board", id:"declineletter", t:"Decline letter with feedback", n:"Every applicant receives written feedback.", x:
+`[Organization letterhead]
+
+[Date]
+
+Dear [Name],
+
+Thank you for submitting [project name] to the [Organization Name] Grant Board. After review, the board is not able to fund this proposal in the [cycle] cycle.
+
+Strengths reviewers noted:
+1. [ ]
+2. [ ]
+
+What would strengthen a future proposal:
+1. [ ]
+2. [ ]
+
+The next cycle opens [date]. [Name] is available to talk through the comments; contact [email].
+
+Sincerely,
+[Name], Grant Board Chair`},
+
+{g:"Grant board", id:"agreement", t:"Grant agreement", n:"For awards your organization makes. Review with counsel.", x:
+`GRANT AGREEMENT
+
+Grantor: [Organization Name], EIN [00-0000000]
+Grantee: [Grantee legal name or program, and fiscal agent if any]
+Award: $[amount]   Grant period: [start] to [end]   Agreement date: [date]
+
+1. PURPOSE. Funds are for [project name] as described in the approved proposal and budget, attached.
+2. USE OF FUNDS. Funds are used only for approved purposes. Changes to the budget over [10] percent of any line require written approval in advance.
+3. PAYMENT. [Schedule, or reimbursement with documentation within (30) days.]
+4. REPORTING. Midyear progress report due [date]; final report due [date], using the grantor's forms.
+5. RECORDS. Grantee keeps receipts and program records for [period] and makes them available on request.
+6. YOUTH PROTECTION. Everyone working with students follows the youth protection and background check requirements of the grantor and the Fraternity.
+7. STUDENT PRIVACY. Student information is reported only as group totals, and names or images are used only with signed releases.
+8. UNSPENT FUNDS. Funds not spent or committed by the end of the grant period are returned unless the grantor approves an extension in writing.
+9. ENDING. The grantor may end this agreement and request return of unspent funds if the terms are not met.
+10. RECOGNITION. Materials describing the project credit the grantor as follows: [ ].
+
+For the Grantor: ______________________  [Name, Title]  Date: ________
+For the Grantee: ______________________  [Name, Title]  Date: ________`},
+
+{g:"Reporting and stewardship", id:"midyear", t:"Midyear progress report", n:"", x:
+`MIDYEAR PROGRESS REPORT
+Grantee: ________  Project: ________  Period covered: ________ to ________
+
+1. Activities completed compared with plan.
+2. Progress on each objective: indicator, target, result so far, data source.
+3. Participation: enrolled, active, sessions held, mentor hours.
+4. Spending to date by budget line, and any changes requested.
+5. Challenges and how you are addressing them.
+6. A consented story or quote (optional, release on file).
+
+Submitted by: ________  Date: ________`},
+
+{g:"Reporting and stewardship", id:"final", t:"Final report", n:"", x:
+`FINAL REPORT
+Grantee: ________  Project: ________  Grant period: ________ to ________
+
+1. Summary of results (150 words).
+2. Objectives: target, final result with numerator and denominator, verification method.
+3. Participation totals for the grant period.
+4. Final spending by budget line, with unspent amount.
+5. What worked, what did not, and what you will change.
+6. Sustainability: how the work continues.
+7. Attachments: updated data profile; consented stories or photos (optional).
+
+Certified accurate by: ________  [Title]  Date: ________`},
+
+{g:"Reporting and stewardship", id:"thanks", t:"Funder thank you letter", n:"Send within a week of the award.", x:
+`[Organization letterhead]
+
+[Date]
+
+Dear [Name],
+
+Thank you for [Funder Name]'s award of $[amount] to [Organization Name] for [project name]. Your support means [specific result, such as "every Kappa League senior will have a mentor beside him for FAFSA night this winter"].
+
+We will send our first progress update by [date]. You are welcome at any session; our next college tour is [date].
+
+With appreciation,
+[Name], [Title]`}
+];
+
+(function(){
+  const store = {
+    get(k,d){try{const v=localStorage.getItem('gra:'+k);return v?JSON.parse(v):d}catch(e){return d}},
+    set(k,v){try{localStorage.setItem('gra:'+k,JSON.stringify(v))}catch(e){}}
+  };
+  const $=id=>document.getElementById(id);
+  try{document.documentElement.lang='en'}catch(e){}
+  document.querySelectorAll('.tblwrap').forEach(t=>{t.tabIndex=0;t.setAttribute('role','region');t.setAttribute('aria-label','Table, scrolls sideways on small screens')});
+  const lessons=[...document.querySelectorAll('section.lesson')];
+  const course=lessons.filter(l=>!l.dataset.lib);
+  const rail=$('rail');
+  let done=store.get('done',{});
+  let cur=0;
+  let onProgress=()=>{};
+
+  function countDone(){return course.filter(l=>done[l.dataset.id]).length}
+  function buildRail(){
+    let h='<div class="rail-head">Course</div><ol>';
+    let libStarted=false;
+    lessons.forEach((l,i)=>{
+      if(l.dataset.lib && !libStarted){libStarted=true;h+='</ol><div class="rail-head">Library</div><ol>'}
+      const d=!l.dataset.lib && done[l.dataset.id];
+      h+=`<li class="${d?'done':''}"><button data-i="${i}" aria-current="${i===cur}"><span class="num">${l.dataset.num}</span><span>${l.dataset.title}</span>${l.dataset.lib?'<span></span>':`<span class="chk" role="img" aria-label="${d?'complete':'not complete'}"></span>`}</button></li>`;
+    });
+    rail.innerHTML=h+'</ol>';
+    rail.querySelectorAll('button').forEach(b=>b.onclick=()=>{go(+b.dataset.i);closeMenu()});
+    const n=countDone();
+    $('progTxt').textContent=`${n} of ${course.length} complete`;
+    $('progBar').style.width=(n/course.length*100)+'%';
+  }
+  function markDone(id){if(!done[id]){done[id]=true;store.set('done',done);buildRail();onProgress()}}
+  function go(i,initial){
+    const leaving=lessons[cur];
+    if(!initial && leaving && !leaving.dataset.lib && !leaving.querySelector('.kc') && leaving.dataset.id!=='m11') markDone(leaving.dataset.id);
+    cur=Math.max(0,Math.min(lessons.length-1,i));
+    lessons.forEach((l,j)=>l.hidden=j!==cur);
+    $('prevBtn').disabled=cur===0;
+    const nb=$('nextBtn');
+    nb.disabled=cur===lessons.length-1;
+    nb.textContent=cur<lessons.length-1?('Next: '+lessons[cur+1].dataset.title):'Next';
+    store.set('cur',cur);
+    try{history.replaceState(null,'','#'+lessons[cur].dataset.id)}catch(e){}
+    buildRail();
+    if(!initial){window.scrollTo({top:0,behavior:'smooth'});const h=lessons[cur].querySelector('h1,h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+  }
+  $('prevBtn').onclick=()=>go(cur-1);
+  $('nextBtn').onclick=()=>go(cur+1);
+  const menuBtn=$('menuBtn');
+  function closeMenu(){rail.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}
+  menuBtn.onclick=()=>{const o=rail.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+
+  // Knowledge checks
+  document.querySelectorAll('.kc[data-answer]').forEach(kc=>{
+    const ans=kc.dataset.answer, fb=kc.querySelector('.fb');
+    kc.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      kc.querySelectorAll('.opt').forEach(x=>x.classList.remove('right','wrong'));
+      const ok=b.dataset.v===ans;
+      b.classList.add(ok?'right':'wrong');
+      kc.dataset.ok=ok?'1':'';
+      fb.textContent=ok?'Correct.':'Not quite. Reread the section above and try again.';
+      const sec=kc.closest('section');
+      if([...sec.querySelectorAll('.kc[data-answer]')].every(k=>k.dataset.ok==='1')){markDone(sec.dataset.id);fb.textContent+=' Module complete.'}
+    });
+  });
+
+  // Checklists
+  document.querySelectorAll('.checklist[data-store]').forEach(ul=>{
+    const key=ul.dataset.store, saved=store.get(key,{});
+    const boxes=[...ul.querySelectorAll('input')];
+    const meter=$(key+'-meter');
+    function upd(){
+      const n=boxes.filter(b=>b.checked).length;
+      if(meter) meter.textContent=`${n} of ${boxes.length} in place`;
+      if(key==='m2-fit'){
+        const p=$('fitPill');
+        if(n===6){p.className='pill ok';p.textContent='Strong fit: prioritize this funder'}
+        else if(n>=4){p.className='pill warn';p.textContent='Possible fit: call the funder to confirm gaps'}
+        else if(n>0){p.className='pill bad';p.textContent='Weak fit: move on unless something changes'}
+        else{p.className='pill warn';p.textContent='Check the boxes to rate fit'}
+      }
+    }
+    boxes.forEach(b=>{b.checked=!!saved[b.id];b.onchange=()=>{saved[b.id]=b.checked;store.set(key,saved);upd()}});
+    upd();
+  });
+
+  // Copy
+  function copyText(t,btn){
+    const orig=btn.textContent;
+    const ok=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent=orig,1500)};
+    const fail=()=>{btn.textContent='Select the text to copy';setTimeout(()=>btn.textContent=orig,2500)};
+    try{navigator.clipboard.writeText(t).then(ok,fail)}catch(e){fail()}
+  }
+  document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{
+    const el=$(b.dataset.copy);
+    const t=[...el.childNodes].filter(n=>n!==b).map(n=>n.textContent).join('').trim();
+    copyText(t,b);
+  });
+
+  // Scholarship lab
+  const num=id=>{const v=parseFloat($(id).value);return isNaN(v)?0:v};
+  const usd=v=>'$'+Math.round(v).toLocaleString('en-US');
+  const pct=(a,b)=>b>0?(a/b*100):null;
+  const words=['zero','one','two','three','four','five','six','seven','eight','nine'];
+  const w=n=>n<10?words[n]:String(n);
+  const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+  function sch(){
+    const S=num('s_seniors'),F=num('s_fafsa'),G=num('s_grad'),R=num('s_recip'),D=num('s_dollars'),O=num('s_outside'),E=num('s_enrolled'),P=num('s_persist');
+    const vm=$('s_verify').value, bench=$('s_bench').value, bsrc=$('s_benchsrc').value.trim(), yr=$('s_year').value.trim()||'the graduating class';
+    const fafsa=pct(F,S), enr=pct(E,G), per=P>0?pct(P,E):null, avg=R>0?D/R:null, lev=D>0?O/D:null;
+    const f=v=>v===null?'n/a':v.toFixed(0)+'%';
+    $('s_out').innerHTML=[
+      ['FAFSA completion',f(fafsa),`${F} of ${S} seniors`],
+      ['Fall enrollment',f(enr),`${E} of ${G} graduates`],
+      ['Year two persistence',per===null?'pending':f(per),per===null?'not yet known':`${P} of ${E} enrolled`],
+      ['Average award',avg===null?'n/a':usd(avg),`${usd(D)} ÷ ${R}`],
+      ['Leverage ratio',lev===null?'n/a':lev.toFixed(1)+' : 1',`${usd(O)} ÷ ${usd(D)}`]
+    ].map(s=>`<div class="stat"><div class="v">${s[1]}</div><div class="k">${s[0]}</div><div class="d tabnum">${s[2]}</div></div>`).join('');
+    const vtxt={nsc:'confirmed by National Student Clearinghouse records',doc:'confirmed by enrollment documents on file',self:'as reported by students (self reported)'}[vm];
+    let t=`For the ${yr}, the foundation awarded ${usd(D)} in scholarships to ${R} of ${S} Kappa League seniors. `;
+    if(F) t+=`${cap(w(F))} of ${S} seniors (${f(fafsa)}) completed the FAFSA. `;
+    if(O && lev!==null) t+=`With mentor support on applications, students secured ${usd(O)} in additional scholarships and grants, documented by award letters, or ${lev.toFixed(1)} dollars of outside aid for every scholarship dollar the foundation awarded. `;
+    if(G) t+=`${cap(w(E))} of ${G} graduates (${f(enr)}) enrolled in college the following fall, ${vtxt}`;
+    if(bench!=='' && G){t+=`, compared with ${parseFloat(bench)}% for ${bsrc||'[comparison group and source]'}`}
+    if(G) t+='. ';
+    if(per!==null) t+=`Of those who enrolled, ${P} (${f(per)}) returned for a second year.`;
+    $('s_gen').textContent=t.trim();
+    const fl=[];
+    if(F>S||R>S||E>G||P>E||G>S) fl.push('A count is larger than the group it belongs to. Check your numbers before using this paragraph.');
+    if(S<10||G<10) fl.push('Fewer than 10 students in this group. Report counts ("7 of 9") rather than percentages, and confirm your suppression rule before publishing.');
+    if(vm==='self') fl.push('Self reported enrollment is weaker evidence. Label it as self reported and plan a records match for next year.');
+    if(bench==='') fl.push('No comparison rate. Add a district or state rate with its source and year so the reviewer can judge the result.');
+    else if(!bsrc) fl.push('Name the comparison source and year.');
+    fl.push('Describe results as associated with participation. Do not claim the program caused them.');
+    $('s_flags').innerHTML=fl.map(x=>`<div class="flag">${x}</div>`).join('');
+  }
+  document.querySelectorAll('#schLab input,#schLab select').forEach(e=>e.addEventListener('input',sch));
+  $('s_copy').onclick=()=>copyText($('s_gen').textContent,$('s_copy'));
+  sch();
+
+  // Objective builder
+  function obj(){$('o_out').textContent=`By ${$('o_when').value}, ${$('o_target').value} of ${$('o_who').value} will ${$('o_what').value}, as measured by ${$('o_how').value}.`}
+  ['o_when','o_target','o_who','o_what','o_how'].forEach(id=>$(id).addEventListener('input',obj));obj();
+
+  // Budget lab
+  function bud(){
+    const pers=num('b_pers'),supp=num('b_supp'),trav=num('b_trav'),cont=num('b_cont'),part=num('b_part'),schl=num('b_sch'),rate=num('b_rate'),hrs=num('b_hours'),hr=num('b_hrate');
+    const direct=pers+supp+trav+cont+part+schl, mtdc=pers+supp+trav+cont, ind=mtdc*rate/100, total=direct+ind, ink=hrs*hr;
+    $('b_out').innerHTML=[
+      ['Total direct costs',usd(direct),'all lines'],
+      ['MTDC base',usd(mtdc),'excludes participant support and scholarships'],
+      ['Indirect request',usd(ind),`${rate}% of MTDC`],
+      ['Total request',usd(total),'direct plus indirect'],
+      ['In kind mentor time',hr?usd(ink):'add a rate',hr?`${hrs} hrs × $${hr}`:`${hrs} hours logged`]
+    ].map(s=>`<div class="stat"><div class="v">${s[1]}</div><div class="k">${s[0]}</div><div class="d tabnum">${s[2]}</div></div>`).join('');
+    const fl=[];
+    if(rate>15) fl.push('Above 15 percent. Federal awards without a negotiated rate cap indirect at the 15 percent de minimis. Private funders often set lower limits.');
+    if(direct>0 && schl/direct>0.5) fl.push('Scholarships are over half the request. Confirm this funder pays scholarships and expects that balance.');
+    if(!hr && hrs) fl.push('Mentor hours have no value assigned. Use a documented published rate and cite it in the budget narrative.');
+    fl.push('Every line needs a calculation and a link to an activity in the budget narrative.');
+    $('b_flags').innerHTML=fl.map(x=>`<div class="flag">${x}</div>`).join('');
+  }
+  document.querySelectorAll('#budLab input').forEach(e=>e.addEventListener('input',bud));bud();
+
+  // Review practice lab
+  const CRIT=[
+    ['Need and alignment',20,'General statements, no sources or numbers. Fit with the organization\'s mission is implied, not shown.',2],
+    ['Program design',20,'Clear activities, trained mentors, youth protection named, logic model attached.',4],
+    ['Data and evidence',25,'Has a denominator (17 of 20), but enrollment is self reported, no benchmark, and outside aid is not tracked.',3],
+    ['Evaluation plan',15,'Measurable objectives with dates and sources for two outcomes; no plan to track college enrollment.',3],
+    ['Budget',10,'No line calculations, and the scholarship amount ($4,000) differs from last year without explanation.',2],
+    ['Capacity and sustainability',10,'Eleven years of operation and two named leads; no reporting history and no plan beyond this award.',3]
+  ];
+  const sc=store.get('rub',{});
+  const rub=$('rub');
+  rub.innerHTML=CRIT.map((c,i)=>`<div class="rub-row"><div><b>${c[0]}</b><span>Weight ${c[1]}</span></div><div class="seg" role="group" aria-label="${c[0]} score">${[1,2,3,4,5].map(v=>`<button data-c="${i}" data-v="${v}" aria-pressed="${sc[i]==v}" aria-label="${c[0]}: ${v}">${v}</button>`).join('')}</div></div>`).join('');
+  function rubCalc(){
+    let t=0,n=0;CRIT.forEach((c,i)=>{if(sc[i]){t+=sc[i]/5*c[1];n++}});
+    $('rubTotal').textContent=Math.round(t);
+    const p=$('rubPill');
+    if(n<CRIT.length){p.className='pill warn';p.textContent=`${n} of ${CRIT.length} scored`}
+    else if(t>=75){p.className='pill ok';p.textContent='Fund'}
+    else if(t>=60){p.className='pill warn';p.textContent='Fund with conditions or offer coaching'}
+    else{p.className='pill bad';p.textContent='Decline with written feedback'}
+  }
+  rub.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    const i=b.dataset.c;sc[i]=+b.dataset.v;store.set('rub',sc);
+    rub.querySelectorAll(`button[data-c="${i}"]`).forEach(x=>x.setAttribute('aria-pressed',x===b));rubCalc();
+  });
+  rubCalc();
+  $('rubReveal').onclick=()=>{
+    const k=$('rubKey');let t=0;
+    k.innerHTML='<b>Calibrated reference scores</b>'+CRIT.map((c,i)=>{t+=c[3]/5*c[1];const yours=sc[i]?` · yours: ${sc[i]}${Math.abs(sc[i]-c[3])>=2?' (discuss at calibration)':''}`:'';return `<div style="margin-top:8px"><b>${c[0]}: ${c[3]}</b>${yours}<br><span style="color:var(--muted)">${c[2]}</span></div>`}).join('')+`<div style="margin-top:10px"><b>Reference total: ${Math.round(t)} of 100.</b> A promising program with weak evidence. Fund with conditions, such as an enrollment records match and budget calculations, or offer coaching and invite a resubmission.</div>`;
+    k.hidden=false;
+  };
+
+  // Template kit
+  const groups=[...new Set(KIT.map(k=>k.g))];
+  $('kitNav').innerHTML=groups.map((g,i)=>`<a href="#kit" data-g="${i}">${g} <span class="tabnum">(${KIT.filter(k=>k.g===g).length})</span></a>`).join('');
+  $('kitList').innerHTML=groups.map((g,i)=>`<h3 id="kitg${i}">${g}</h3>`+KIT.filter(k=>k.g===g).map(k=>`<details class="kit-item"><summary>${k.t}</summary><div>${k.n?`<p class="kit-note">${k.n}</p>`:''}<div class="tpl" id="kit_${k.id}"><button class="btn ghost copy" data-kit="${k.id}">Copy</button></div></div></details>`).join('')).join('');
+  KIT.forEach(k=>{$('kit_'+k.id).appendChild(document.createTextNode(k.x))});
+  document.querySelectorAll('[data-kit]').forEach(b=>b.onclick=()=>copyText(KIT.find(k=>k.id===b.dataset.kit).x,b));
+  $('kitNav').querySelectorAll('a').forEach(a=>a.onclick=e=>{e.preventDefault();$('kitg'+a.dataset.g).scrollIntoView({behavior:'smooth'})});
+  function kitMarkdown(){
+    let md='# Guide Right Grant Academy Template Kit\n\nCreated by the National Guide Right Incubator for Guide Right foundations and affiliated 501(c)(3) organizations. Replace every bracket. Have counsel review agreements and policies.\n';
+    groups.forEach(g=>{md+=`\n## ${g}\n`;KIT.filter(k=>k.g===g).forEach(k=>{md+=`\n### ${k.t}\n\n${k.n?'_'+k.n+'_\n\n':''}\`\`\`\n${k.x}\n\`\`\`\n`})});
+    return md;
+  }
+
+  // Final assessment
+  const FQ=[
+    ['Which comes first in grant readiness?',['Writing the executive summary','Confirming the legal applicant and approvals','Designing the budget'],1],
+    ['Which entity applies for, receives, and reports on a grant for a chapter\'s Guide Right program?',['The chapter','The chapter\'s affiliated 501(c)(3) organization or foundation','The Guide Right Director personally'],1],
+    ['Scholarship leverage ratio equals:',['Outside aid secured ÷ scholarship dollars awarded','Scholarship dollars ÷ recipients','Recipients ÷ seniors'],0],
+    ['The strongest evidence of college enrollment is:',['A mentor\'s recollection','Student self report','A records match such as the National Student Clearinghouse'],2],
+    ['A group of 6 students should be reported as:',['A percentage only','A count such as "5 of 6", subject to the suppression rule','An inflated number to protect privacy'],1],
+    ['How should scholarship awards be paid?',['Cash to the student','To the college for the student\'s account after enrollment is confirmed','To the selection committee chair'],1],
+    ['Under the revised Uniform Guidance, the federal de minimis indirect rate is up to:',['10 percent of total costs','15 percent of modified total direct costs','25 percent of personnel'],1],
+    ['Before a student photo appears in an application you need:',['A signed media release on file','Verbal permission from the student','Nothing if the student is smiling'],0],
+    ['A board member helped write a proposal now before the grant board. The member should:',['Score it generously','Recuse, with the recusal recorded in the minutes','Score it but not comment'],1],
+    ['Combining results across organizations, the correct rate is:',['The average of each organization\'s percentage','Total enrolled ÷ total graduates across all organizations','The highest organization\'s rate'],1]
+  ];
+  const fa=store.get('final2',{});
+  $('final').innerHTML=FQ.map((q,i)=>`<div class="kc" data-fq="${i}" style="margin-top:12px"><div class="q">${i+1}. ${q[0]}</div><div class="opts">${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join('')}</div></div>`).join('');
+  function finalScore(){let s=0,n=0;FQ.forEach((q,i)=>{if(fa[i]!==undefined){n++;if(fa[i]===q[2])s++}});return {s,n}}
+  function finalCalc(){
+    const {s,n}=finalScore();
+    $('finalScore').textContent=`${s} / 10`;
+    const p=$('finalPill');
+    if(n<10){p.className='pill warn';p.textContent=`${n} of 10 answered`;$('cert').hidden=true}
+    else if(s>=8){p.className='pill ok';p.textContent='Course complete';if(!store.get('passedAt',null))store.set('passedAt',new Date().toISOString());markDone('m11');$('cert').hidden=false;drawCert()}
+    else{p.className='pill bad';p.textContent='Review the related modules and retry';$('cert').hidden=true}
+    onProgress();
+  }
+  document.querySelectorAll('[data-fq]').forEach(kc=>{
+    const i=+kc.dataset.fq;
+    const paint=()=>kc.querySelectorAll('.opt').forEach(b=>{b.classList.remove('right','wrong');if(fa[i]!==undefined&&+b.dataset.j===fa[i])b.classList.add(fa[i]===FQ[i][2]?'right':'wrong')});
+    kc.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{fa[i]=+b.dataset.j;store.set('final2',fa);paint();finalCalc()});
+    paint();
+  });
+
+  // Certificate
+  const certName=$('cert_name'), certOrg=$('cert_org');
+  certName.value=store.get('certName','');
+  certOrg.value=store.get('org','');
+  function drawCert(){
+    const c=$('certCanvas'), x=c.getContext('2d'), W=c.width, H=c.height;
+    x.fillStyle='#fffdf8';x.fillRect(0,0,W,H);
+    x.strokeStyle='#70110C';x.lineWidth=28;x.strokeRect(14,14,W-28,H-28);
+    x.strokeStyle='#D4AA35';x.lineWidth=4;x.strokeRect(52,52,W-104,H-104);
+    x.textAlign='center';x.fillStyle='#7a5c0e';
+    x.font='500 26px "IBM Plex Mono", monospace';x.fillText('GUIDE RIGHT GRANT ACADEMY',W/2,190);
+    x.fillStyle='#70110C';x.font='700 76px "Playfair Display", Georgia, serif';x.fillText('Certificate of Completion',W/2,300);
+    x.fillStyle='#241917';x.font='400 32px "Source Sans 3", Arial, sans-serif';x.fillText('This certifies that',W/2,400);
+    x.font='700 66px "Playfair Display", Georgia, serif';x.fillText(certName.value.trim()||'[Your name]',W/2,500);
+    x.strokeStyle='#D4AA35';x.lineWidth=2;x.beginPath();x.moveTo(W/2-420,530);x.lineTo(W/2+420,530);x.stroke();
+    x.font='400 32px "Source Sans 3", Arial, sans-serif';
+    x.fillText(certOrg.value.trim()||'[Your organization]',W/2,590);
+    x.fillText('completed the Guide Right Grant Academy, including the final assessment.',W/2,660);
+    const pa=store.get('passedAt',null);
+    const d=pa?new Date(pa):new Date();
+    x.font='600 30px "Source Sans 3", Arial, sans-serif';
+    x.fillText(d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),W/2,760);
+    x.fillStyle='#685a52';x.font='400 24px "Source Sans 3", Arial, sans-serif';
+    x.fillText('Created by the National Guide Right Incubator',W/2,920);
+  }
+  let certT;
+  [certName,certOrg].forEach(el=>el.addEventListener('input',()=>{
+    store.set('certName',certName.value);store.set('org',certOrg.value);
+    if($('learnerOrg')&&el===certOrg) $('learnerOrg').value=certOrg.value;
+    clearTimeout(certT);certT=setTimeout(drawCert,150);onProgress();
+  }));
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{if(!$('cert').hidden)drawCert()});
+
+  // Organization field on welcome
+  const lo=$('learnerOrg');
+  lo.value=store.get('org','');
+  lo.addEventListener('input',()=>{store.set('org',lo.value);certOrg.value=lo.value;onProgress()});
+
+  // Start
+  const h=(location.hash||'').slice(1);
+  const hi=lessons.findIndex(l=>l.dataset.id===h);
+  cur=hi>=0?hi:Math.min(store.get('cur',0),lessons.length-1);
+  go(cur,true);
+  finalCalc();
+
+  // ---------- Runtime capabilities (progress record, downloads) ----------
+  const use=n=>(window.claude&&window.claude.use)?window.claude.use(n).catch(()=>null):Promise.resolve(null);
+  const nativeDl=!(window.claude&&window.claude.use)?{save:({filename,data})=>new Promise(res=>{const blob=data instanceof Blob?data:new Blob([data],{type:'text/plain'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);res({status:'saved'})})}:null;
+  (async()=>{
+    let [db,user,dl]=await Promise.all([use('db'),use('user'),use('downloads')]);
+    if(!dl&&nativeDl) dl=nativeDl;
+    // Downloads
+    if(dl){
+      const kb=$('kitDownload');kb.hidden=false;
+      kb.onclick=async()=>{
+        try{await dl.save({filename:'Guide Right Grant Template Kit.md',data:kitMarkdown()});$('kitMsg').textContent='Saved.'}
+        catch(e){$('kitMsg').textContent=e&&e.code==='declined'?'Download cancelled.':'Download is not available here. Use Copy on each template.'}
+      };
+      const cs=$('certSave');cs.hidden=false;
+      cs.onclick=()=>{drawCert();$('certCanvas').toBlob(async b=>{
+        try{await dl.save({filename:'Guide Right Grant Academy Certificate.png',data:b});$('certMsg').textContent='Saved.'}
+        catch(e){$('certMsg').textContent=e&&e.code==='declined'?'Save cancelled.':'Saving is not available here. Take a screenshot of the certificate instead.'}
+      },'image/png')};
+    } else {
+      $('kitMsg').textContent='Use Copy on each template.';
+      $('certMsg').textContent='Take a screenshot of the certificate to keep a copy.';
+    }
+
+    const uid=user?await user.id():null;
+    const status=$('syncStatus');
+    if(!db||!uid){status.textContent='Your progress saves in this browser on this device.';return}
+    status.textContent='Signed in. Your progress and completion are saved to your course record.';
+
+    // Merge remote progress into local
+    const ref=db.doc('progress/'+uid);
+    try{
+      const snap=await ref.get();
+      if(snap.exists){
+        const r=snap.data()||{};
+        let changed=false;
+        Object.keys(r.done||{}).forEach(k=>{if(r.done[k]&&!done[k]){done[k]=true;changed=true}});
+        if(changed){store.set('done',done);buildRail()}
+        if(r.org&&!lo.value){lo.value=r.org;certOrg.value=r.org;store.set('org',r.org)}
+        if(r.passedAt&&!store.get('passedAt',null)) store.set('passedAt',r.passedAt);
+      }
+    }catch(e){}
+    let last='', writing=false, pending=false, timer;
+    function payload(){
+      const {s,n}=finalScore();
+      return {done, completeCount:countDone(), total:course.length, finalScore:s, finalAnswered:n,
+        passed: n===10 && s>=8, passedAt: store.get('passedAt',null), org: (lo.value||'').slice(0,160)};
+    }
+    async function flush(){
+      if(writing){pending=true;return}
+      const p=payload();const key=JSON.stringify(p);
+      if(key===last) return;
+      writing=true;
+      try{await ref.set({...p,updatedAt:new Date().toISOString()});last=key}
+      catch(e){if(e&&e.code==='invalid_argument'){status.textContent='Your progress saves in this browser. Your access to this course does not allow saving a record.';onProgress=()=>{}}}
+      writing=false;
+      if(pending){pending=false;flush()}
+    }
+    onProgress=()=>{clearTimeout(timer);timer=setTimeout(flush,1500)};
+    onProgress();
+
+    // Editors: completions table
+    const canEdit=user?await user.canEdit():false;
+    if(!canEdit) return;
+    $('adminPanel').hidden=false;
+    let rows=[];
+    async function renderAdmin(){
+      const ids=rows.map(r=>r.id);
+      const ps=ids.length?await user.profiles(ids):{};
+      const tb=$('adminTable').querySelector('tbody');
+      tb.textContent='';
+      if(!rows.length){const tr=document.createElement('tr');const td=document.createElement('td');td.colSpan=5;td.textContent='No learner records yet. Records appear as signed in learners open the course.';tr.appendChild(td);tb.appendChild(tr);return}
+      rows.forEach(r=>{
+        const d=r.data;const tr=document.createElement('tr');
+        [ (ps[r.id]&&ps[r.id].name)||'Someone', d.org||'', `${d.completeCount||0} of ${d.total||course.length}`, d.finalAnswered===10?`${d.finalScore} / 10`:`${d.finalAnswered||0} answered`, d.passed&&d.passedAt?new Date(d.passedAt).toLocaleDateString():'Not yet' ]
+        .forEach(v=>{const td=document.createElement('td');td.textContent=String(v);tr.appendChild(td)});
+        tb.appendChild(tr);
+      });
+    }
+    db.collection('progress').onSnapshot(s=>{rows=s.docs.map(d=>({id:d.id,data:d.data()||{}}));renderAdmin()},()=>{$('adminMsg').textContent='Completions could not be loaded.'});
+    $('adminCsv').onclick=async()=>{
+      if(!dl){$('adminMsg').textContent='Download is not available here.';return}
+      const ps=rows.length?await user.profiles(rows.map(r=>r.id)):{};
+      const q=v=>'"'+String(v).replace(/"/g,'""')+'"';
+      const csv=['Learner,Organization,Modules complete,Total modules,Final score,Passed date']
+        .concat(rows.map(r=>{const d=r.data;return [q((ps[r.id]&&ps[r.id].name)||'Someone'),q(d.org||''),d.completeCount||0,d.total||course.length,d.finalAnswered===10?d.finalScore:'',d.passed&&d.passedAt?q(d.passedAt.slice(0,10)):''].join(',')})).join('\n');
+      try{await dl.save({filename:'Grant Academy completions.csv',data:csv});$('adminMsg').textContent='Saved.'}
+      catch(e){$('adminMsg').textContent=e&&e.code==='declined'?'Download cancelled.':'Download is not available here.'}
+    };
+  })();
+})();
+
+</script>
+</body>
+</html>
